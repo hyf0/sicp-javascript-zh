@@ -8,7 +8,7 @@
 
 ## 赞助我
 
-![](/img/alipay.png)
+![]($withBase('/img/alipay.png'))
 
 ## 协议
 
