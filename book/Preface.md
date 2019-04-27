@@ -1,8 +1,8 @@
 > 来源：[Preface of JavaScript Adaptation](https://www.comp.nus.edu.sg/~cs1101s/sicp/chapters/77)
 
-> 译者：[塔希](https://github.com/iheyunfei)
+> 译者：[塔希](https://iheyunfei.github.io/blog/)
 
-> 协议：
+> 协议：[CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ---
 
