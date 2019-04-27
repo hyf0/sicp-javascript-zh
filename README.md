@@ -1,4 +1,4 @@
-#【译-中文】SICP(JavaScript语言版)-SICP in Javascript
+# 【译-中文】SICP(JavaScript语言版)-SICP in Javascript
 
 原文：[Structure and Interpretation of Computer Programs, JavaScript Adaptation](https://www.comp.nus.edu.sg/~cs1101s/sicp/)
 
