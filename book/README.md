@@ -2,7 +2,7 @@
 home: true
 heroImage: /logo.jpg
 actionText: 马上阅读 →
-actionLink: /zh/guide/
+actionLink: /preface.html
 features:
 - title: 【译-中文】SICP in JavaScript
   details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。
