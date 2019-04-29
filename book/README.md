@@ -1,5 +1,5 @@
 ---
 home: true
 actionText: 马上阅读 →
-actionLink: /preface.html
+actionLink: /donate.html
 ---
