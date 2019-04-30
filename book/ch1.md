@@ -31,5 +31,14 @@
 
 尽管JavaScript作为一门语言诞生时的目的是为了控制网页浏览器，但JavaScript依然是一个 **通用** 编程语言。一个JavaScript **解释器（interpreter）** 就是一部用来执行 **过程** 的机器，因为是 **JavaScript** 解释器，所以只能用于执行JavaScript描述的过程。第一个JavaScript解释器是由Eich在Netscape Communications公司期间实现的，用在Netscape Navigator网页浏览器上。JavaScript的主要 **[语言特性](http://www.yinwang.org/blog-cn/2017/07/06/master-pl)** 继承自Scheme语言和Self programming languages。Scheme是Lisp的一个方言，并且被当作原版SICP书籍的编程语言。从Scheme里，JavaScript继承了其大部分的函数式设计原则，例如静态作用域、一等函数公民和动态类型，结果就是本书中的程序可以很直接、简单地从原书中的Scheme翻译成JavaScript。
 
+JavaScript仅仅与Java在表面上有相似之处[^4]，最大的关联点就是名字中都带个Java而已。JavaScript和Java都沿用了C语言的 **程序块（block structure）** 结构。与Java和C这种 **编译** 成底层语言后再执行的过程相比，JavaScript常常是被浏览器内建的解释器 **解释** 执行[^5]。在Netscape Navigator浏览器出现后，其他网页浏览器也开始提供内嵌的JavaScript解释器，包括微软的Internet Explorer浏览器（微软称其为JScript而非JavaScript）。JavaScript因为可以控制浏览器的行为而普及后，广受大众欢迎，进而引起了对JavaScript进行标准化的工作，最终产生了一个标准化的语言标准，被称为 **ECMAScript** [^6]。第一版的ECMAScript(ECMA 1997)标准由Guy Lewis Steele Jr. 主导制定于1997年6月。本书使用的是第六版[^7]，由Allen Wirfs-Brock主导制定，在2015年6月的ECMA大会上被接受。
+
 ^3：[脚本语言](https://zh.wikipedia.org/wiki/%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80)（英语：Scripting language）是为了缩短传统的“编写、编译、链接、运行”（edit-compile-link-run）过程而创建的计算机编程语言。
 
+^4：读者可以参照雷锋和雷峰塔的关系
+
+^5：现在编译型和解释型语言之间的界限越来越模糊，JavaScript现在也会被编译执行，而Java则是先编译然后再解释执行。
+
+^6：读者可以认为JavaScript是ECMAScript的一种实际实现。
+
+^7：常被称为 ECMAScript 6 或者 ECMAScript 2015
