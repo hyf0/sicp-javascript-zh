@@ -8,7 +8,7 @@
 
 ## 赞助我
 
-![](/sicp-javascript-zh/img/alipay.png)
+![](img/alipay.png)
 
 ## 协议
 
