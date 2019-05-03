@@ -1,7 +1,7 @@
 module.exports = {
     base: '/',
-    title: 'SICP Javascript版本 中文版',
-    description: '【译-中文】SICP in JavaScript',
+    title: '【译-中文】SICP in JavaScript',
+    description: '译者：塔希',
     dest: './docs',
     markdown: {
       lineNumbers: true,
