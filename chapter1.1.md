@@ -12,11 +12,11 @@ In programming, we deal with two kinds of elements: functions and data. (Later w
 
 In this chapter we will deal only with simple numerical data so that we can focus on the rules for building functions.<sup id="1-1a1">[[1]](#1-1b1)</sup> In later chapters we will see that these same rules allow us to build functions to manipulate compound data as well.
 
-<small id="1-1b1">
+<div id="1-1b1">
 
 [[1]](#1-1a1) The characterization of numbers as simple data is a barefaced bluff. In fact, the treatment of numbers is one of the trickiest and most confusing aspects of any programming language. Some typical issues involved are these: How large a number can we represent? How many decimal places of accuracy can we represent? Above and beyond these questions, of course, lies a collection of issues concerning roundoff and truncation errors—the entire science of numerical analysis. Since our focus in this book is on large-scale program design rather than on numerical techniques, we are going to ignore these problems. The numerical examples in this chapter will exhibit the usual roundoff behavior that one observes when using arithmetic operations that preserve a limited number of decimal places of accuracy in noninteger operations.
 
-</small>
+</div>
 
 ## 1.1.1 Expressions
 
@@ -31,7 +31,7 @@ One kind of statement is an expression statement, which consists of an expressio
 
 by clicking it, it will respond by creating a separate browser tab where the statement is shown, with the option to evaluate the statement. Click on the primitive expression statement, and see what happens!
 
-Expressions representing numbers may be combined with operators (such as + or *) to form a compound expression that represents the application of a corresponding primitive function to those numbers. For example, evaluate any of the following expression statements[[1]](#1-1-1x1) by clicking on it:
+Expressions representing numbers may be combined with operators (such as + or *) to form a compound expression that represents the application of a corresponding primitive function to those numbers. For example, evaluate any of the following expression statements<sup id="1-1-1a1">[[1]](#1-1-1b1)</sup> by clicking on it:
 
 ```js
 137 + 349;
@@ -63,9 +63,9 @@ Expressions representing numbers may be combined with operators (such as + or *)
 
 [Click here to run](https://sourceacademy.nus.edu.sg/playground#chap=1&prgrm=FAJgdA7ABA1FCMAGA3MYQ)
 
-Expressions such as these, which contain other expressions as components, are called combinations. Combinations that are formed by an operator symbol in the middle, and operand expressions to the left and right of it, are called operator combinations. The value of an operator combination is obtained by applying the function specified by the operator to the arguments that are the values of the operands.
+Expressions such as these, which contain other expressions as components, are called combinations. Combinations that are formed by an *operator* symbol in the middle, and *operand* expressions to the left and right of it, are called *operator combinations*. The value of an operator combination is obtained by applying the function specified by the operator to the *arguments* that are the values of the operands.
 
-The convention of placing the operator between the operands is known as infix notation. It follows the mathematical notation that the reader is most likely familiar with from school and everyday life. As in mathematics, operator combinations can be nested, that is, they can take arguments that themselves are operator combinations:
+The convention of placing the operator between the operands is known as *infix* notation. It follows the mathematical notation that the reader is most likely familiar with from school and everyday life. As in mathematics, operator combinations can be *nested*, that is, they can take arguments that themselves are operator combinations:
 
 ```js
 (3 * 5) + (10 - 6)
@@ -132,11 +132,13 @@ which the interpreter would readily evaluate to be 57. We can help ourselves by 
 
 
 to visually separate the major components of the expression.
-The interpreter always operates in the same basic cycle: It reads a statement from the browser, evaluates the statement, and prints the result. This mode of operation is often expressed by saying that the interpreter runs in a read-eval-print loop. Observe in particular that it is not necessary to explicitly instruct the interpreter to print the value of the statement.
+The interpreter always operates in the same basic cycle: It reads a statement from the browser, evaluates the statement, and prints the result. This mode of operation is often expressed by saying that the interpreter runs in a *read-eval-print loop*. Observe in particular that it is not necessary to explicitly instruct the interpreter to print the value of the statement.
 
-<small id="1-1-1x1">
-[1] Note that the semicolon indicates to the JavaScript interpreter that the expression should be taken as a statement, and thus as a complete program. However, JavaScript systems are not strict about these semicolons; they can often be left out. In this book, we will never leave out these optional semicolons, and point out which statements come with semicolons and which ones don't.
-</small>
+<div id="1-1-1b1">
+
+[[1]](#1-1-1a1) Note that the semicolon indicates to the JavaScript interpreter that the expression should be taken as a statement, and thus as a complete program. However, JavaScript systems are not strict about these semicolons; they can often be left out. In this book, we will never leave out these optional semicolons, and point out which statements come with semicolons and which ones don't.
+
+</div>
 
 ## 1.1.2 Naming and the Environment
 
@@ -148,9 +150,9 @@ In JavaScript, we name constants using *constant declarations*. Typing
 const size = 2;
 ```
 
-causes the interpreter to associate the value 2 with the name size. The purpose of the constant declaration is to create this association, and not to compute a particular value as for expression statements. The JavaScript specification demands that the special value undefined shall be the result of evaluating such constant declarations.
+causes the interpreter to associate the value 2 with the name **size**. The purpose of the constant declaration is to create this association, and not to compute a particular value as for expression statements. The JavaScript specification demands that the special value undefined shall be the result of evaluating such constant declarations.
 
-Once the name size has been associated with the number 2, we can refer to the value 2 by name as in
+Once the name **size** has been associated with the number 2, we can refer to the value 2 by name as in
 
 ```js
 size
@@ -162,7 +164,7 @@ or
 5 * size;
 ```
 
-Of course, the JavaScript interpreter needs to execute the constant declaration for size before the name size can be used in an expression. In this online book, the statements that need to be evaluated before a new statement are omitted for brevity. However, in order to see and play with the program, you can click on it. The program, preceeded by all required statements, then appears in a new browser tab. Thus, as a result of clicking on
+Of course, the JavaScript interpreter needs to execute the constant declaration for **size** before the name **size** can be used in an expression. In this online book, the statements that need to be evaluated before a new statement are omitted for brevity. However, in order to see and play with the program, you can click on it. The program, preceeded by all required statements, then appears in a new browser tab. Thus, as a result of clicking on
 
 ```js
 5 * size;
@@ -177,7 +179,7 @@ const size = 2;
 
 You notice here that JavaScript statements can be placed in a sequence. The interpreter evaluates the components of the sequence in the given order, and treats the value of the last component as the value of the sequence.
 
-Here are further examples of the use of const:
+Here are further examples of the use of **const**:
 
 ```js
 const pi = 3.14159;
@@ -200,13 +202,17 @@ circumference;
 ```
 
 Constant declaration is our language's simplest means of abstraction, for it allow us to use simple names to refer to the results of compound operations, such as the circumference computed above. In general, computational objects may have very complex structures, and it would be extremely inconvenient to have to remember and repeat their details each time we want to use them. Indeed, complex programs are constructed by building, step by step, computational objects of increasing complexity. Our interpreter facilitates this step-by-step program construction because name-object associations can be created incrementally in successive interactions.
-It should be clear that the possibility of associating values with names and later retrieving them means that the interpreter must maintain some sort of memory that keeps track of the name-object pairs. This memory is called the environment (more precisely the global environment, since we will see later that a computation may involve a number of different environments).[[1]](1-1-2x1)
+It should be clear that the possibility of associating values with names and later retrieving them means that the interpreter must maintain some sort of memory that keeps track of the name-object pairs. This memory is called the environment (more precisely the global environment, since we will see later that a computation may involve a number of different environments).<sup id="1-1-2a1">[[1]](#1-1-2b1)</sup>
 
-<small id="1-1-2x1">
-[1] Chapter 3 will show that this notion of environment is crucial, both for understanding how the interpreter works and for implementing interpreters.
+<small id="1-1-2b1">
+
+[[1]](#1-1-2a1) Chapter 3 will show that this notion of environment is crucial, both for understanding how the interpreter works and for implementing interpreters.
+
 </small>
 
-## 1.1.3 求值运算符的组合
+<div id="title1-1-3">
+
+## 1.1.3 Evaluating Operator Combinations</div>
 
 One of our goals in this chapter is to isolate issues about process descriptions. As a case in point, let us consider that, in evaluating operator combinations, the interpreter proceeds as follows.
 
@@ -221,13 +227,13 @@ Notice how succinctly the idea of recursion can be used to express what, in the 
 (2 + 4 * 6) * (3 + 12);
 ```
 
-requires that the evaluation rule be applied to four different combinations. We can obtain a picture of this process by representing the combination in the form of a tree, as shown in Figure 1.1. Each combination is represented by a node with branches corresponding to the operator and the operands of the operator combination stemming from it. The terminal nodes (that is, nodes with no branches stemming from them) represent either operators or numbers. Viewing evaluation in terms of the tree, we can imagine that the values of the operands percolate upward, starting from the terminal nodes and then combining at higher and higher levels. In general, we shall see that recursion is a very powerful technique for dealing with hierarchical, treelike objects. In fact, the percolate values upward form of the evaluation rule is an example of a general kind of process known as *tree accumulation*.
+requires that the evaluation rule be applied to four different combinations. We can obtain a picture of this process by representing the combination in the form of a tree, as shown in Figure 1.1. Each combination is represented by a node with branches corresponding to the operator and the operands of the operator combination stemming from it. The terminal nodes (that is, nodes with no branches stemming from them) represent either operators or numbers. Viewing evaluation in terms of the tree, we can imagine that the values of the operands percolate upward, starting from the terminal nodes and then combining at higher and higher levels. In general, we shall see that recursion is a very powerful technique for dealing with hierarchical, treelike objects. In fact, the "percolate values upward" form of the evaluation rule is an example of a general kind of process known as *tree accumulation*.
 
 <div align="center">
 
 ![Tree representation, showing the value of each subexpression.](./images/ch1_1_3-1.png)
 
-<p>图1.1 Tree representation, showing the value of each subexpression.</p>
+<p>Figure1.1 Tree representation, showing the value of each subexpression.</p>
 
 </div>
 
@@ -236,11 +242,11 @@ Next, observe that the repeated application of the first step brings us to the p
 - the values of numerals are the numbers that they name,
 - the values of names are the objects associated with those names in the environment.
 
-Notice the role of the environment in determining the meaning of the names in expressions. In JavaScript, it is meaningless to speak of the value of an expression such as x + 1 without specifying any information about the environment that would provide a meaning for the name x. As we shall see in chapter 3, the general notion of the environment as providing a context in which evaluation takes place will play an important role in our understanding of program execution.
+Notice the role of the environment in determining the meaning of the names in expressions. In JavaScript, it is meaningless to speak of the value of an expression such as **x + 1** without specifying any information about the environment that would provide a meaning for the name x. As we shall see in chapter 3, the general notion of the environment as providing a context in which evaluation takes place will play an important role in our understanding of program execution.
 
-Notice that the evaluation rule given above does not handle constant declarations. For instance, evaluating const x = 3; does not apply the = operator to two arguments, one of which is the value of the name x and the other of which is 3, since the purpose of the constant declaration is precisely to associate x with a value. (That is, the part x = 3 in the constant declaration const x = 3; is not an operator combination.)
+Notice that the evaluation rule given above does not handle constant declarations. For instance, evaluating **const x = 3**; does not apply the = operator to two arguments, one of which is the value of the name x and the other of which is 3, since the purpose of the constant declaration is precisely to associate x with a value. (That is, the part **x = 3** in the constant declaration **const x = 3**; is not an operator combination.)
 
-The string “const” in the constant declaration is rendered in bold letters to indicate that it is a keyword in JavaScript. Keywords are reserved words that carry a particular meaning, and thus cannot be used as names. A keyword or a combination of keywords instructs the JavaScript interpreter to treat the respective statement in a special way. Each such syntactic form has its own evaluation rule. The various kinds of statements (each with its associated evaluation rule) constitute the syntax of the programming language.
+The string "const" in the constant declaration is rendered in bold letters to indicate that it is a *keyword* in JavaScript. Keywords are reserved words that carry a particular meaning, and thus cannot be used as names. A keyword or a combination of keywords instructs the JavaScript interpreter to treat the respective statement in a special way. Each such syntactic form has its own evaluation rule. The various kinds of statements (each with its associated evaluation rule) constitute the syntax of the programming language.
 
 ## 1.1.4 Functions
 
@@ -250,9 +256,9 @@ We have identified in JavaScript some of the elements that must appear in any po
 - Nesting of combinations provides a means of combining operations.
 - Constant declarations that associate names with values provide a limited means of abstraction.
 
-Now we will learn about function declarations, a much more powerful abstraction technique by which a compound operation can be given a name and then referred to as a unit.
+Now we will learn about *function declarations*, a much more powerful abstraction technique by which a compound operation can be given a name and then referred to as a unit.
 
-We begin by examining how to express the idea of squaring. We might say, To square something, take it times itself. This is expressed in our language as square
+We begin by examining how to express the idea of "squaring". We might say, "To square something, take it times itself." This is expressed in our language as square
 
 ```js
 function square(x) {
@@ -267,17 +273,15 @@ function square(    x   ) { return x    *     x; }
 //  ^       ^       ^         ^    ^    ^     ^
 // To    square something,  take   it times itself.
 ```
-We have here a compound function, which has been given the name square. The function represents the operation of multiplying something by itself. The thing to be multiplied is given a local name, x, which plays the same role that a pronoun plays in natural language. Evaluating the declaration creates this compound function and associates it with the name square.[[1]](#1-1-4x1)
+We have here a *compound function*, which has been given the name **square**. The function represents the operation of multiplying something by itself. The thing to be multiplied is given a local name, **x**, which plays the same role that a pronoun plays in natural language. Evaluating the declaration creates this compound function and associates it with the name square.<sup id="1-1-4a1">[[1]](#1-1-4b1)<sup>
 
 Our simplest form of a function declaration is
 
-```js
-function name( parameters ) { return expression; }
-```
+> function *name*( *parameters* ) { return *expression*; }
 
-The *name* is a symbol to be associated with the function in the environment.[[2]](#1-1-4x1) The *parameters* are the names used within the body of the function to refer to the corresponding arguments of the function. The *expression* after the keyword return is the return expression that will yield the value of the function application when the parameters are replaced by the arguments to which the function is applied.[[3]](#1-1-4x1) The parameters are grouped within parentheses and separated by commas, just as they would be in an actual call to the function being declared.
+The *name* is a symbol to be associated with the function in the environment.<sup id="1-1-4a2">[[2]](#1-1-4b1)</sup> The *parameters* are the names used within the body of the function to refer to the corresponding arguments of the function. The *expression* after the keyword **return** is the *return* expression that will yield the value of the function application when the *parameters* are replaced by the arguments to which the function is applied.<sup id="1-1-4a3">[[3]](#1-1-4b1)</sup> The parameters are grouped within parentheses and separated by commas, just as they would be in an actual call to the function being declared.
 
-Having declared the square function, we can now use it in a function application expression, which we turn into a statement using a semicolon:
+Having declared the square function, we can now use it in a *function application expressio*n, which we turn into a statement using a semicolon:
 
 ```js
 square(21);
@@ -320,30 +324,31 @@ function f(a) {
 }
 ```
 
-The application of functions such as sum_of_squares(3,4) is—after operator combination—the second kind of combination of expressions into larger expressions that we encounter. In addition to compound functions, JavaScript provides a number of primitive functions that are built into the interpreter. An example is the function math_log that computes the natural logarithm of its argument.[[4]](#1-1-4x1) Evaluating the application expression math_log(1) results in the number 0. Primitive functions are used in exactly the same way as compound functions. Indeed, one could not tell by looking at the definition of sum_of_squares given above whether square was built into the interpreter, like math_log, or defined as a compound function.
+The application of functions such as **sum_of_squares(3,4)** is—after operator combination—the second kind of combination of expressions into larger expressions that we encounter. In addition to compound functions, JavaScript provides a number of primitive functions that are built into the interpreter. An example is the function **math_log** that computes the natural logarithm of its argument.<sup id="1-1-4a4">[[4]](#1-1-4b1)</sup> Evaluating the application expression **math_log(1)** results in the number 0. Primitive functions are used in exactly the same way as compound functions. Indeed, one could not tell by looking at the definition of **sum_of_squares** given above whether **square** was built into the interpreter, like **math_log**, or defined as a compound function.
 
 
-<small id="1-1-4x1">
-[1] Observe that there are two different operations being combined here: we are creating the function, and we are giving it the name square. It is possible, indeed important, to be able to separate these two notions—to create functions without naming them, and to give names to functions that have already been created. We will see how to do this in section 1.3.2.
+<small id="1-1-4b1">
+
+[[1]](#1-1-4a1) Observe that there are two different operations being combined here: we are creating the function, and we are giving it the name square. It is possible, indeed important, to be able to separate these two notions—to create functions without naming them, and to give names to functions that have already been created. We will see how to do this in section 1.3.2.
 <br>
 
-[2] Throughout this book, we will describe the general syntax of programs by using italic symbols—e.g., name—to denote the slots in the expression to be filled in when such an expression is actually used.
+[[2]](#1-1-4a2) Throughout this book, we will describe the general syntax of programs by using italic symbols—e.g., name—to denote the slots in the expression to be filled in when such an expression is actually used.
 <br>
 
-[3] We shall see in the next section that the body of the function can be a sequence of statements. In this case, the interpreter evaluates each statement in the sequence in turn until a return statement determines the value of the function application.
+[[3]](#1-1-4a3) We shall see in the next section that the body of the function can be a sequence of statements. In this case, the interpreter evaluates each statement in the sequence in turn until a return statement determines the value of the function application.
 <br>
 
-[4] The Source language used in this adaptation introduces names math_* for all functions and constants in JavaScript's Math library.
+[[4]](#1-1-4a4) The Source language used in this adaptation introduces names math_* for all functions and constants in JavaScript's Math library.
 </small>
 
 ## 1.1.5 The Substitution Model for Function Application
 
-To evaluate an application combination, the interpreter follows a similar process as for operator combinations, which we described in section [1.1.3](#求值运算符的组合). That is, the interpreter evaluates the elements of the combination and applies the function (which is the value of the function expression) to the arguments (which are the values of the argument expressions of the application combination).
+To evaluate an application combination, the interpreter follows a similar process as for operator combinations, which we described in section [1.1.3](#title1-1-3). That is, the interpreter evaluates the elements of the combination and applies the function (which is the value of the function expression) to the arguments (which are the values of the argument expressions of the application combination).
 
 In more detail, the interpreter proceeds as follows when evaluating application combinations:
 
 - To evaluate an application combination of the form
-- > function-expression ( argument-expressions )
+- > *function-expression* ( *argument-expressions* )
 - do the following:
     1. Evaluate the function expression of the application combination, resulting in the function to be applied.
     2. Evaluate the argument expressions of the combination.
@@ -369,7 +374,7 @@ in which we replace the parameter a by the argument 5:
 sum_of_squares(5 + 1, 5 * 2)
 ```
 
-Thus the problem reduces to the evaluation of an application combination with two arguments and a function expression sum_of_squares. Evaluating this combination involves three subproblems. We must evaluate the function expression to get the function to be applied, and we must evaluate the argument expressions to get the arguments. Now 5 + 1 produces 6 and 5 * 2 produces 10, so we must apply the sum_of_squares function to 6 and 10. These values are substituted for the parameters x and y in the return expression of sum_of_squares, reducing the expression to
+Thus the problem reduces to the evaluation of an application combination with two arguments and a function expression **sum_of_squares**. Evaluating this combination involves three subproblems. We must evaluate the function expression to get the function to be applied, and we must evaluate the argument expressions to get the arguments. Now **5 + 1** produces **6** and **5 * 2** produces **10**, so we must apply the **sum_of_squares** function to **6** and **10**. These values are substituted for the parameters **x** and **y** in the return expression of **sum_of_squares**, reducing the expression to
 
 ```js
 square(6) + square(10)
@@ -404,10 +409,10 @@ and finally by addition to
 136
 ```
 
-The process we have just described is called the substitution model for function application. It can be taken as a model that determines the meaning of function application, insofar as the functions in this chapter are concerned. However, there are two points that should be stressed:
+The process we have just described is called the substitution model for function application. It can be taken as a model that determines the "meaning" of function application, insofar as the functions in this chapter are concerned. However, there are two points that should be stressed:
 
 - The purpose of the substitution is to help us think about function application, not to provide a description of how the interpreter really works. Typical interpreters do not evaluate function applications by manipulating the text of a function to substitute values for the parameters. In practice, the substitution is accomplished by using a local environment for the parameters. We will discuss this more fully in chapters 3 and 4 when we examine the implementation of an interpreter in detail.
-- Over the course of this book, we will present a sequence of increasingly elaborate models of how interpreters work, culminating with a complete implementation of an interpreter and compiler in chapter 5. The substitution model is only the first of these models—a way to get started thinking formally about the evaluation process. In general, when modeling phenomena in science and engineering, we begin with simplified, incomplete models. As we examine things in greater detail, these simple models become inadequate and must be replaced by more refined models. The substitution model is no exception. In particular, when we address in chapter 3 the use of functions with mutable data, we will see that the substitution model breaks down and must be replaced by a more complicated model of function application.[[1]](1-1-5x1)
+- Over the course of this book, we will present a sequence of increasingly elaborate models of how interpreters work, culminating with a complete implementation of an interpreter and compiler in chapter 5. The substitution model is only the first of these models—a way to get started thinking formally about the evaluation process. In general, when modeling phenomena in science and engineering, we begin with simplified, incomplete models. As we examine things in greater detail, these simple models become inadequate and must be replaced by more refined models. The substitution model is no exception. In particular, when we address in chapter 3 the use of functions with mutable data, we will see that the substitution model breaks down and must be replaced by a more complicated model of function application.<sup id="1-1-5a1">[[1]](#1-1-5b1)</sup>
 
 ## Applicative order versus normal order
 
@@ -436,36 +441,35 @@ followed by the reductions
 136
 ```
 
-This gives the same answer as our previous evaluation model, but the process is different. In particular, the evaluations of 5 + 1 and 5 * 2 are each performed twice here, corresponding to the reduction of the expression
+This gives the same answer as our previous evaluation model, but the process is different. In particular, the evaluations of **5 + 1** and **5 * 2** are each performed twice here, corresponding to the reduction of the expression
 
 ```js
 x * x
 ```
 
-with x replaced respectively by 5 + 1 and 5 * 2.
+with x replaced respectively by **5 + 1** and **5 * 2**.
 
-This alternative fully expand and then reduce evaluation method is known as normal-order evaluation, in contrast to the evaluate the arguments and then apply method that the interpreter actually uses, which is called applicative-order evaluation. It can be shown that, for function applications that can be modeled using substitution (including all the functions in the first two chapters of this book) and that yield legitimate values, normal-order and applicative-order evaluation produce the same value. (See exercise 1.5 for an instance of an "illegitimate" value where normal-order and applicative-order evaluation do not give the same result.)
+This alternative fully expand and then reduce evaluation method is known as normal-order evaluation, in contrast to the evaluate the arguments and then apply method that the interpreter actually uses, which is called *applicative-order evaluation*. It can be shown that, for function applications that can be modeled using substitution (including all the functions in the first two chapters of this book) and that yield legitimate values, normal-order and applicative-order evaluation produce the same value. (See exercise 1.5 for an instance of an "illegitimate" value where normal-order and applicative-order evaluation do not give the same result.)
 
-JavaScript uses applicative-order evaluation, partly because of the additional efficiency obtained from avoiding multiple evaluations of expressions such as those illustrated with above and, more significantly, because normal-order evaluation becomes much more complicated to deal with when we leave the realm of procedures that can be modeled by substitution. On the other hand, normal-order evaluation can be an extremely valuable tool, and we will investigate some of its implications in chapters 3 and 4. [[2]](1-1-5x1)
+JavaScript uses applicative-order evaluation, partly because of the additional efficiency obtained from avoiding multiple evaluations of expressions such as those illustrated with above and, more significantly, because normal-order evaluation becomes much more complicated to deal with when we leave the realm of procedures that can be modeled by substitution. On the other hand, normal-order evaluation can be an extremely valuable tool, and we will investigate some of its implications in chapters 3 and 4.<sup id="1-1-5a2">[[2]](#1-1-5b1)</sup>
 
-<small id="1-1-5x1">
-[1] Despite the simplicity of the substitution idea, it turns out to be surprisingly complicated to give a rigorous mathematical definition of the substitution process. The problem arises from the possibility of confusion between the names used for the parameters of a function and the (possibly identical) names used in the expressions to which the function may be applied. Indeed, there is a long history of erroneous definitions of substitution in the literature of logic and programming semantics. See Stoy 1977 for a careful discussion of substitution.
-[2] In chapter 3 we will introduce stream processing, which is a way of handling apparently infinite data structures by incorporating a limited form of normal-order evaluation. In section 4.2 we will modify the JavaScript interpreter to produce a normal-order variant of JavaScript.
-</small>
+<div id="1-1-5b1">
+
+[[1]](#1-1-5a1) Despite the simplicity of the substitution idea, it turns out to be surprisingly complicated to give a rigorous mathematical definition of the substitution process. The problem arises from the possibility of confusion between the names used for the parameters of a function and the (possibly identical) names used in the expressions to which the function may be applied. Indeed, there is a long history of erroneous definitions of substitution in the literature of logic and programming semantics. See Stoy 1977 for a careful discussion of substitution.
+
+[[2]](#1-1-5a2) In chapter 3 we will introduce stream processing, which is a way of handling apparently infinite data structures by incorporating a limited form of normal-order evaluation. In section 4.2 we will modify the JavaScript interpreter to produce a normal-order variant of JavaScript.
+
+</div>
 
 ## 1.1.6 Conditional Expressions and Predicates
 
 The expressive power of the class of functions that we can declare at this point is very limited, because we have no way to make tests and to perform different operations depending on the result of a test. For instance, we cannot declare a function that computes the absolute value of a number by testing whether the number is negative or not, and taking different actions in each case according to the rule
 
-```
-f(x) = | x |
+<div align="center">
 
-// 等价于
+![ABS function](./images/ch1_1_6-1.png)
 
-f(x) =  x if x >= 0
-
-f(x) = -x otherwise
-```
+</div>
 
 This construct is a case analysis and can be expressed in JavaScript using a *conditional expression* as follows:
 
@@ -479,7 +483,7 @@ The general form of a conditional expression is
 
 > *predicate* ? *consequent-expression* : *alternative-expression*
 
-Conditional expressions begin with a *predicate*—that is, an expression whose value is interpreted as either *true* or *false*, two distinguished boolean values in JavaScript.[1] Note that the primitive boolean expressions true and false trivially evaluate to the boolean values *true* and *false*, respectively. The *predicate* is followed by a question mark, the *consequent-expression*, a colon, and finally the *alternative-expression*.
+Conditional expressions begin with a *predicate*—that is, an expression whose value is interpreted as either *true* or *false*, two distinguished boolean values in JavaScript.<sup id="1-1-6a1">[[1]](#1-1-6b1)</sup> Note that the primitive boolean expressions true and false trivially evaluate to the boolean values *true* and *false*, respectively. The *predicate* is followed by a question mark, the *consequent-expression*, a colon, and finally the *alternative-expression*.
 
 To evaluate a conditional expression, the interpreter starts by evaluating the *predicate* part of the expression. If the predicate evaluates to true, the interpreter evaluates *consequent-expression*. Otherwise it evaluates *alternative-expression*.
 
@@ -670,7 +674,7 @@ function a_plus_abs_b(a, b) {
 }
 ```
 
-Note that in the conditional expression, we cannot directly use the operators + and - instead of the names plus and minus because in infix notation, only operator symbols are allowed in the middle, not compound expressions.[2]
+Note that in the conditional expression, we cannot directly use the operators + and - instead of the names plus and minus because in infix notation, only operator symbols are allowed in the middle, not compound expressions.<sup id="1-1-6a2">[[2]](#1-1-6b1)</sup>
 
 <details>
 
@@ -720,3 +724,10 @@ What behavior will Ben observe with an interpreter that uses applicative-order e
 
 </details>
 
+<div id="1-1-6b1">
+
+[[1]](#1-1-6a1) In JavaScript, other values are automcatically converted into true and false according to conversion rules, but we choose not to make use of these conversion rules in this book.
+
+[[2]](#1-1-6a2) For an expression of the form a (b > 0 ? + : -) b the JavaScript interpreter would not know the precedence of the operator between a and b, and therefore such expressions are not allowed.
+
+</div>
