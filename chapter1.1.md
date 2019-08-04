@@ -676,7 +676,6 @@ Note that in the conditional expression, we cannot directly use the operators + 
 点击查看答案
 </summary>
 
-
 According to section 1.1.5, evaluation of a application expression proceeds as follows:
 
 - Evaluate the function expression of the application combination, resulting in the function to be applied.
