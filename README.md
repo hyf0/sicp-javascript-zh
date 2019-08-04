@@ -1,8 +1,10 @@
 # 《程序构造与解释》 JavaScript版
 
-原文：[Structure and Interpretation of Computer Programs JavaScript Adaptation](https://www.comp.nus.edu.sg/~cs1101s/sicp/)
+原文：[Structure and Interpretation of Computer Programs JavaScript Adaptation](https://sicp.comp.nus.edu.sg/)
 
 译者：[塔希](https://github.com/iheyunfei/)
+
+- [Blog](http://iheyunfei.com/)
 
 协议：[CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
