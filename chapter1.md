@@ -1,3 +1,9 @@
+> 来源：[The Elements of Programming](https://www.comp.nus.edu.sg/~cs1101s/sicp/chapters/2)
+
+> 译者：[塔希](https://github.com/iheyunfei/)
+
+> 协议：[CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
+
 # 第一章 使用函数构造抽象
 
 > The acts of the mind, wherein it exerts its power over simple ideas, are chiefly these three: 1. Combining several simple ideas into one compound one, and thus all complex ideas are made. 2. The second is bringing two ideas, whether simple or complex, together, and setting them by one another so as to take a view of them at once, without uniting them into one, by which it gets all its ideas of relations. 3. The third is separating them from all other ideas that accompany them in their real existence: this is called abstraction, and thus all its general ideas are made. —— John Locke An Essay Concerning Human Understanding (1690)
@@ -10,7 +16,7 @@
 
 幸运的是，学习编程要比学习魔法安全得多，因为我们要面对的“小精灵”被一种安全的方式保存着。不过，现实世界中的编程依然要求谨慎、专业和智慧。举个例子，一个小小的程序错误都可能导致使用计算机辅助操控的飞机发生坠机、水坝崩坏或者工业机器人产生自毁行为。
 
-软件工程大师们掌握着高超的构建程序的能力，所以他们才能合理地确信程序产生的过程，能够正确地完成其被安排的任务。它们能够“预视”到系统的行为，知道该怎么组织程序的结构来避免意料之外的错误以及可能导致的严重后果，并且明白当错误出现时该怎么*定位、解决*它们。设计优良的计算系统，就像一个设计优良的汽车或核反应堆，是采用模块化设计的，所以每一部分都可以独立地被构建、替换和除错(debug)。
+软件工程大师们掌握着高超的构建程序的能力，所以他们才能合理地确信程序产生的过程，能够正确地完成其被安排的任务。软件工程大师们能够“预视”到系统的行为，知道该怎么组织程序的结构来避免意料之外的错误以及可能导致的严重后果，并且明白当错误出现时该怎么*定位、解决*它们。设计优良的计算系统，就像一个设计优良的汽车或核反应堆，是采用模块化设计的，所以每一部分都可以独立地被构建、替换和除错(debug)。
 
 
 ## 使用JavaScript编程
@@ -23,4 +29,4 @@ JavaScript仅仅与Java在表面上有相似之处，最大的关联点就是名
 
 网页可以执行内嵌其中的JavaScript程序已经成为互联网的共识，这促使了网页浏览器的开发者去实现JavaScript解释器。随着JavaScript程序变得越来越复杂，解释器的效率也变得越来越高，其中使用了一些精巧、复杂的技巧，例如 **[即时编译（JIT）](https://zh.wikipedia.org/wiki/%E5%8D%B3%E6%99%82%E7%B7%A8%E8%AD%AF)** 技术。大部分的JavaScript程序内嵌于网页，被浏览器解释执行，但是JavaScript也被用于编写苹果电脑桌面仪表板的小控件，以及控制一些软件或硬件的行为，比如Adobe Reader、Adobe Flash和一些通用的远程桌面设备。
 
-不管怎样,对于一个在线教学编程书籍来说，可以被浏览器解释执行的能力使JavaScript成为了一门理想的编程语言。对JavaScript来说，通过在网页上点击执行JavaScript程序是非常自然的一件事——毕竟这就是JavaScript被设计出来的目的。从根本上来说，JavaScript拥有的语言特性使其成为了一个完美的工具，非常适合被用来学习、理解程序结构和数据结构的概念。同时也是一个完美的媒介，将程序结构和数据结构与支持它们的JavaScript语言特性联系起来。JavaScript的静态作用域、一等函数公民语言特性提供了一种简单、直接的途径来理解、应用抽象机制，动态类型则使得程序使用数据时不需要提前声明其类型。除了以上所有的考量之外，还有一点——使用JavaScript编程是很有趣的。
+不管怎样，对于一个在线教学编程书籍来说，可以被浏览器解释执行的能力使JavaScript成为了一门理想的编程语言。对JavaScript来说，通过在网页上点击执行JavaScript程序是非常自然的一件事——毕竟这就是JavaScript被设计出来的目的。从根本上来说，JavaScript拥有的语言特性使其成为了一个完美的工具，非常适合被用来学习、理解程序结构和数据结构的概念。同时也是一个完美的媒介，将程序结构和数据结构与支持它们的JavaScript语言特性联系起来。JavaScript的静态作用域、一等函数公民语言特性提供了一种简单、直接的途径来理解、应用抽象机制，动态类型则使得程序使用数据时不需要提前声明其类型。除了以上所有的考量之外，还有一点——使用JavaScript编程是很有趣的。

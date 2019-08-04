@@ -1,16 +1,20 @@
-# 1.1 The Elements of Programming
+> 来源：[The Elements of Programming](https://www.comp.nus.edu.sg/~cs1101s/sicp/chapters/2)
 
-A powerful programming language is more than just a means for instructing a computer to perform tasks. The language also serves as a framework within which we organize our ideas about processes. Thus, when we describe a language, we should pay particular attention to the means that the language provides for combining simple ideas to form more complex ideas. Every powerful language has three mechanisms for accomplishing this:
+> 译者：[塔希](https://github.com/iheyunfei/)
 
-- **primitive expressions**, which represent the simplest entities the language is concerned with,
-- **means of combination**, by which compound elements are built from simpler ones, and
-- **means of abstraction**, by which compound elements can be named and manipulated as units.
+> 协议：[CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-In programming, we deal with two kinds of elements: functions and data. (Later we will discover that they are really not so distinct.) Informally, data is "stuff" that we want to manipulate, and functions are descriptions of the rules for manipulating the data. Thus, any powerful programming language should be able to describe primitive data and primitive functions and should have methods for combining and abstracting functions and data.
+# 1.1 编程的基本元素
 
-In programming, we deal with two kinds of elements: functions and data. (Later we will discover that they are really not so distinct.) Informally, data is stuff that we want to manipulate, and functions are descriptions of the rules for manipulating the data. Thus, any powerful programming language should be able to describe primitive data and primitive functions and should have methods for combining and abstracting functions and data.
+一种强大的编程语言不仅仅是操控电脑完成一些任务的手段，同样也表现的犹如一种框架，我们在其中组织存在于自身大脑中关于计算过程的想法。因此，当我们描述一门编程语言时，我们应该特别关注语言提供给我们的 **如何组合简单从而形成复杂** 的手段。任何一门强大的语言都提供了三种机制来帮助做到这点：
 
-In this chapter we will deal only with simple numerical data so that we can focus on the rules for building functions.<sup id="1-1a1">[[1]](#1-1b1)</sup> In later chapters we will see that these same rules allow us to build functions to manipulate compound data as well.
+- **基本表达式**，代表一门编程语言所关心的最简单的元素
+- **组合的手段**，通过这些手段，我们可以于简单的元素之上构建复合的元素，以及
+- **抽象的手段**——通过这些手段，我们可以对复合元素命名，并且以单元为个体来操控复合元素。
+
+编程时，我们与这两种元素打交道——函数和数据（稍后，我们会发现它们之间的的区别并没有那么明显）。通俗的讲，数据是一种需要被我们操控、处理的“东西”，函数则是一系列规则（对于如何操控、处理数据）的描述。因此，任何强力的编程语言都要有能力表述基本的数据和函数，并且，拥有对函数和数据进行组合和抽象的手段。
+
+本章中，为了可以专注于构建函数的规则，我们仅仅处理简单的数值型数据<sup id="1-1a1">[[1]](#1-1b1)</sup>。随后的章节中，我们会认识到这些规则适用于复合的数据。
 
 <div id="1-1b1">
 
@@ -18,20 +22,22 @@ In this chapter we will deal only with simple numerical data so that we can focu
 
 </div>
 
-## 1.1.1 Expressions
+## 1.1.1 表达式
 
-One easy way to get started at programming in JavaScript is to interact with the JavaScript interpreter that is built into the browser you are using to view this page. JavaScript programs are called statements. We have set up the statements shown with a dark background such that you can click on them. The mouse click on JavaScript statements is programmed in such a way that a JavaScript interpreter is displayed, which can evaluate the statement and display the resulting value. By the way, the program that makes the mouse click on a JavaScript statement display the interpreter is itself written in JavaScript; we call it the script for the mouse click.
+当想要使用JavaScript开始编程时，一种简单的方式是通过与内建于浏览器(也就是你正在浏览本页面使用的)的JavaScript解释器进行互动。JavaScript programs are called statements. 我们已经编写好了一些语句，显示在下方的可以通过鼠标点击深色区域内。通过点击深色区域的JavaScript语句，一个可以对JavaScript语句进行求值的解释器会显示出来，并且可以展示求值后的结果。顺便一提，实现这些功能的程序同样由JavaScript编写；我们称呼这个鼠标点击程序为Script。<sub>(译者注：鉴于兼容性的原因，请通过点击区域下方的 **Click here to run** 来访问对应的JavaScript程序)</sub>
 
-One kind of statement is an expression statement, which consists of an expression, followed by a semicolon. A simple kind of an expression is a number. (More precisely, the expression consists of the numerals that represent the number in base 10.) If you ask our script to display the interpreter for the expression statement
+有一种JavaScript语句类型称为表达式语句，由一个表达式尾随一个分号组成。一个简单的表达式可以是个数字(更精确的说，这个表达式是由一个数学型符号构成，其代表着一个以10为基数的数值。)如果你要求Script程序显示这个表达式的求值结果
 
 ```js
 486;
 ```
 [Click here to run](https://sourceacademy.nus.edu.sg/playground#chap=1&prgrm=FAFgHAbA3MxA)
 
-by clicking it, it will respond by creating a separate browser tab where the statement is shown, with the option to evaluate the statement. Click on the primitive expression statement, and see what happens!
+通过点击 Click here to run，浏览器会创建一个新的标签页，新的标签页中包含着对应的JavaScript语句和对语句进行求值的选项。赶快点击 Click here to run，然后看看会发生什么吧！
 
-Expressions representing numbers may be combined with operators (such as + or *) to form a compound expression that represents the application of a corresponding primitive function to those numbers. For example, evaluate any of the following expression statements<sup id="1-1-1a1">[[1]](#1-1-1b1)</sup> by clicking on it:
+代表着数字的表达式可以通过运算符(如 + 或 * )组合，形成一个复合表达式，其表示把这些数字应用到相应的的基本函数上。
+
+例如，通过点击 Click here to run，求值下列的任何表达式语句<sup id="1-1-1a1">[[1]](#1-1-1b1)</sup>:
 
 ```js
 137 + 349;
@@ -63,9 +69,10 @@ Expressions representing numbers may be combined with operators (such as + or *)
 
 [Click here to run](https://sourceacademy.nus.edu.sg/playground#chap=1&prgrm=FAJgdA7ABA1FCMAGA3MYQ)
 
-Expressions such as these, which contain other expressions as components, are called combinations. Combinations that are formed by an *operator* symbol in the middle, and *operand* expressions to the left and right of it, are called *operator combinations*. The value of an operator combination is obtained by applying the function specified by the operator to the *arguments* that are the values of the operands.
+上述包含着其他表达式的表达式被称为组合式。一个有着 *运算符(operator)* 在中间，*运算对象(operand)* 在两边形状的组合式被称为 *运算符组合式(operator combinations)*。一个运算符组合式的求值结果取决于运算符对应的函数，以及应用于函数的被称为*参数(arguments)*的运算对象。
 
-The convention of placing the operator between the operands is known as *infix* notation. It follows the mathematical notation that the reader is most likely familiar with from school and everyday life. As in mathematics, operator combinations can be *nested*, that is, they can take arguments that themselves are operator combinations:
+上述关于将运算符放置于运算对象中间位置的约定被称为 *中缀(infix)* 记法。它与读者在上学时熟悉的常规数学记法一样。和数学一样，运算符组合式可以 *嵌套(nested)* 的，也就是说，运算符组合式接受的参数同样也可以是运算符组合式。
+
 
 ```js
 (3 * 5) + (10 - 6)
@@ -73,7 +80,7 @@ The convention of placing the operator between the operands is known as *infix* 
 
 [Click here to run](https://sourceacademy.nus.edu.sg/playground#chap=1&prgrm=FACgzABAVBCsCUEDUEQEYAMEC0EBs8A3MMEA)
 
-As usual, parentheses are used to group operator combinations in order to avoid ambiguities. JavaScript also follows the usual conventions when parentheses are omitted; multiplication and division bind stronger than addition and subtraction. For example,
+按照惯例，括号被用来包裹运算符组合式来避免歧义。JavaScript同样遵守这个约定，当省略括号时，乘法和除法之间的绑定——优先级，高于加法和减法。
 
 ```js
 3 * 5 + 10 / 2;
@@ -81,8 +88,7 @@ As usual, parentheses are used to group operator combinations in order to avoid 
 
 [Click here to run](https://sourceacademy.nus.edu.sg/playground#chap=1&prgrm=FAZgBAVGCsYNRgIwAYwHowCYDcxhA)
 
-
-stands for
+等价于
 
 ```js
 (3 * 5) + (10 / 2)
@@ -91,7 +97,7 @@ stands for
 [Click here to run](https://sourceacademy.nus.edu.sg/playground#chap=1&prgrm=FACgzABAVBCsCUEDUEQEYAMED0EBM8A3MMEA)
 
 
-We say that * and / have higher precedence than + and -. Sequences of additions and subtractions are read from left to right, as are sequences of multiplications and divisions. Thus,
+我们称这种情况为 * 和 / 有着比 + 和 - 更高的优先级。对于按序出现的加法和减法的序列，其阅读顺序由左到右。对于按序出现的乘法和除法的序列也是一样。因此，
 
 ```js
 3 / 5 * 2 - 4 + 3;
@@ -99,8 +105,7 @@ We say that * and / have higher precedence than + and -. Sequences of additions 
 
 [Click here to run](https://sourceacademy.nus.edu.sg/playground#chap=1&prgrm=FAZgBA9GCsYFRgExgLRgCxgNRhAbmGCA)
 
-
-stands for
+等价于
 
 ```js
 (((3 / 5) * 2) - 4) + 3;
@@ -109,9 +114,9 @@ stands for
 [Click here to run](https://sourceacademy.nus.edu.sg/playground#chap=1&prgrm=FACjGYAIHpIVgJSQFSQExILSQCxINSTgDcwwQA)
 
 
-We say that the operators +, -, * and / are left-associative.
+我们称 +, -, * 和 / 为左结合运算符。
 
-There is no limit (in principle) to the depth of such nesting and to the overall complexity of the expressions that the JavaScript interpreter can evaluate. It is we humans who might get confused by still relatively simple expressions such as
+原则上，对JavaScript的解释器的求值能力来讲，表达式的嵌套深度是没有限制的。但对于我们人类来说，我们甚至可以被一些相对简单的嵌套表达式搞迷糊，例如
 
 ```js
 3 * 2 * (4 + (3 - 5)) + 10 * (27 / 6);
@@ -119,8 +124,7 @@ There is no limit (in principle) to the depth of such nesting and to the overall
 
 [Click here to run](https://sourceacademy.nus.edu.sg/playground#chap=1&prgrm=FAZgBAVGBMlgFAFjAageAtGArASl6mAIwAMc80A7GAPRgBsuA3MMEA)
 
-
-which the interpreter would readily evaluate to be 57. We can help ourselves by writing such an expression in the form
+解释器则能很容易的求值出57。不过，我们可以通过以下这种方式书写表达式，帮助我们
 
 ```js
 3 * 2 * (4 + (3 - 5)) 
@@ -131,28 +135,29 @@ which the interpreter would readily evaluate to be 57. We can help ourselves by 
 [Click here to run](https://sourceacademy.nus.edu.sg/playground#chap=1&prgrm=FAZgBAVGBMlgFAFjAageAtGArASl2MGsAIwAMc80A7GAPRgBsuA3MMEA)
 
 
-to visually separate the major components of the expression.
-The interpreter always operates in the same basic cycle: It reads a statement from the browser, evaluates the statement, and prints the result. This mode of operation is often expressed by saying that the interpreter runs in a *read-eval-print loop*. Observe in particular that it is not necessary to explicitly instruct the interpreter to print the value of the statement.
+从视觉上将表达式的主要组成部分分开。
+
+解释器的运算过程运行在一个基本的循环中：解释器得到来自浏览器的语句，对语句进行求值，打印求值的结果。这种运算模式通常被表达成解释器运行在一个 *读入-求值-打印 循环 read-eval-print loop* 中。要特别注意的是，完全显式的打印任何语句的值是不必要的。
 
 <div id="1-1-1b1">
 
-[[1]](#1-1-1a1) Note that the semicolon indicates to the JavaScript interpreter that the expression should be taken as a statement, and thus as a complete program. However, JavaScript systems are not strict about these semicolons; they can often be left out. In this book, we will never leave out these optional semicolons, and point out which statements come with semicolons and which ones don't.
+[[1]](#1-1-1a1) 注意分号 **;** 使得JavaScript解释器将此表达式当作一个语句，因此被认为是一个完整的程序。但是，JavaScript本身并没有严格的要求任何时候都要带上分号，有时候可以忽略。但在本书中，我们绝不会把分号当作可选的，并且会指出哪些语句带了分号，哪些没有带。
 
 </div>
 
-## 1.1.2 Naming and the Environment
+## 1.1.2 命名和环境(Environment)
 
-A critical aspect of a programming language is the means it provides for using names to refer to computational objects, and our first such means are constants. We say that the name identifies a constant whose value is the object.
+对于一门编程语言来说，相当关键的一方面就是其提供的使用名字来指代一个计算对象的手段，而我们所接触的第一个这种手段就是*常量 constants*。我们称这种命名标识了一个常量，其值是一个对象。
 
-In JavaScript, we name constants using *constant declarations*. Typing
+在JavaScript中，我们使用 *常量声明 constant declarations* 语句，键入
 
 ```js
 const size = 2;
 ```
 
-causes the interpreter to associate the value 2 with the name **size**. The purpose of the constant declaration is to create this association, and not to compute a particular value as for expression statements. The JavaScript specification demands that the special value undefined shall be the result of evaluating such constant declarations.
+使得解释器将值 **2** 与名字 **size** 关联起来。这个常量声明的作用就是创造关联，而非计算出一个表达式语句特定的值。JavaScript的规范要求对 *常量声明* 语句的求值结果为 *undefined*
 
-Once the name **size** has been associated with the number 2, we can refer to the value 2 by name as in
+一旦名字 **size** 与 数字 **2** 关联起来，我们可以通过名字 **size** 来指代值 **2**
 
 ```js
 size
@@ -164,22 +169,22 @@ or
 5 * size;
 ```
 
-Of course, the JavaScript interpreter needs to execute the constant declaration for **size** before the name **size** can be used in an expression. In this online book, the statements that need to be evaluated before a new statement are omitted for brevity. However, in order to see and play with the program, you can click on it. The program, preceeded by all required statements, then appears in a new browser tab. Thus, as a result of clicking on
+当然，在名字 **size** 可以被用在表达式之前，JavaScript解释器必须先执行 **size** 的常量声明。对于本书来说，为了简洁性，需要被事先执行的声明语句被刻意忽略了。不过，为了查看求值后的结果，你可以点击 Click here to run。在浏览器新打开的标签页中的程序会包含所有需要的语句。因此，作为点击下方的结果
 
 ```js
 5 * size;
 ```
 
-a new tab appears that contains the statement
+一个包含着所有需要语句的新标签页会被打开，其内容如下所示
 
 ```js
 const size = 2;
 5 * size;
 ```
 
-You notice here that JavaScript statements can be placed in a sequence. The interpreter evaluates the components of the sequence in the given order, and treats the value of the last component as the value of the sequence.
+注意到，JavaScript语句可以按序放置成一个序列。解释器会按序求值序列，然后将这个序列的最后一部分当作这个序列的值。
 
-Here are further examples of the use of **const**:
+这里有些更进一步的关于 **const** 的使用示例
 
 ```js
 const pi = 3.14159;
@@ -201,12 +206,13 @@ const circumference = 2 * pi * radius;
 circumference;
 ```
 
-Constant declaration is our language's simplest means of abstraction, for it allow us to use simple names to refer to the results of compound operations, such as the circumference computed above. In general, computational objects may have very complex structures, and it would be extremely inconvenient to have to remember and repeat their details each time we want to use them. Indeed, complex programs are constructed by building, step by step, computational objects of increasing complexity. Our interpreter facilitates this step-by-step program construction because name-object associations can be created incrementally in successive interactions.
-It should be clear that the possibility of associating values with names and later retrieving them means that the interpreter must maintain some sort of memory that keeps track of the name-object pairs. This memory is called the environment (more precisely the global environment, since we will see later that a computation may involve a number of different environments).<sup id="1-1-2a1">[[1]](#1-1-2b1)</sup>
+常量声明是我们语言中最简单的抽象手段，它允许我们能使用简单的名字来指代复合运算结果，例如上方的 circumference。通常，计算对象可能有着非常复杂的结构，当我们想要使用这种计算对象时，如果每次都要记住和重复它们的细节，这会对我们造成的极度的不便。实际上，构建复杂的程序也就是逐步地构建复合的、渐增复杂度的计算对象。我们的解释器使得这种逐步构建程序的方式变得容易，因为通过一系列和程序的连续交互，我们可以渐进的构建起名字-对象的联系。
+
+需要明确的一点——在名字和值之间创建联系，在稍晚的时候使用它们意味着解释器需要维持某种记忆来保持追踪 名字-值 的配对。这种记忆被称为环境(更准确的讲是全局环境，因为我们即将看到一个计算过程可能包含着大量不同的环境)。<sup id="1-1-2a1">[[1]](#1-1-2b1)</sup>
 
 <small id="1-1-2b1">
 
-[[1]](#1-1-2a1) Chapter 3 will show that this notion of environment is crucial, both for understanding how the interpreter works and for implementing interpreters.
+[[1]](#1-1-2a1) 第三章会说明，对于理解解释器如何工作和如何实现解释器，环境的概念是至关重要的。
 
 </small>
 

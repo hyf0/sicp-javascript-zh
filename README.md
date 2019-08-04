@@ -1,4 +1,4 @@
-# 《程序构造与解释》 JavaScript版
+# 《程序构造与解释》JavaScript版
 
 原文：[Structure and Interpretation of Computer Programs JavaScript Adaptation](https://sicp.comp.nus.edu.sg/)
 
