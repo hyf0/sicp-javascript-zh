@@ -20,5 +20,5 @@
 - [2 Building Abstractions with Data]()
 - [3 Modularity, Objects, and State]()
 - [4 Metalinguistic Abstraction]()
-- [References]()
+- [文献参考](https://github.com/iheyunfei/sicp-javascript-zh/blob/master/References.md)
 - [Index]()
