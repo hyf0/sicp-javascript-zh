@@ -1,15 +1,24 @@
-# 【译-中文】SICP(JavaScript语言版)-SICP in Javascript
+# 《程序构造与解释》 JavaScript版
 
-原文：[Structure and Interpretation of Computer Programs, JavaScript Adaptation](https://www.comp.nus.edu.sg/~cs1101s/sicp/)
+原文：[Structure and Interpretation of Computer Programs JavaScript Adaptation](https://www.comp.nus.edu.sg/~cs1101s/sicp/)
 
-译者：[塔希](https://iheyunfei.github.io/blog/)
+译者：[塔希](https://github.com/iheyunfei/)
 
-- [Github](https://github.com/iheyunfei/sicp-javascript-zh)
+协议：[CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
+<!-- 
 # 赞助我
 
-![](docs/img/alipay.png)
+![](docs/img/alipay.png) -->
 
-# 协议
+# 目录
 
-[CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
+- [Foreword]()
+- [Prefaces]()
+- [Acknowledgments]()
+- [1 Building Abstractions with Functions]()
+- [2 Building Abstractions with Data]()
+- [3 Modularity, Objects, and State]()
+- [4 Metalinguistic Abstraction]()
+- [References]()
+- [Index]()
