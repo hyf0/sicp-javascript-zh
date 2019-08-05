@@ -8,9 +8,9 @@
 
 > The acts of the mind, wherein it exerts its power over simple ideas, are chiefly these three: 1. Combining several simple ideas into one compound one, and thus all complex ideas are made. 2. The second is bringing two ideas, whether simple or complex, together, and setting them by one another so as to take a view of them at once, without uniting them into one, by which it gets all its ideas of relations. 3. The third is separating them from all other ideas that accompany them in their real existence: this is called abstraction, and thus all its general ideas are made. —— John Locke An Essay Concerning Human Understanding (1690)
 
-我们即将学习有关 *计算过程(computational process)* 的概念。计算过程是一种栖息于电脑中、抽象的存在。经过演化，过程可以操控另一种被称为 *数据(data)* 的抽象的事物。人们创建程序来指导、控制各种过程，而 *程序(program)* 是一种含有许多规则的形式，主导着过程的运行。从形式上看，就像我们通过自己编写的咒语控制计算机中的精灵一样。
+我们即将学习有关 *计算过程(computational process)* 的概念。计算过程是一种栖息于电脑中、抽象的存在。经过演化，过程可以操控另一种被称为 *数据(data)* 的抽象事物。人们创建程序来指导、控制各种过程，而 *程序(program)* 是一种含有许多规则的形式，主导着过程的运行。从形式上看，就像我们通过自己编写的咒语控制计算机中的精灵一样。
 
-对于一个计算过程的理解可以参照巫师如何理解小精灵。小精灵并非由物质组成的实体，它们无法被看见和触摸。但是，它们却又是实际存在的。它们能完成智力性的任务、可以回答问题，并且通过在银行付钱或者控制工厂里机器人的手臂来对世界产生实际影响。我们用来“变出”过程的程序就如同巫师们用来召唤小精灵的咒语一样。所谓的程序是由神秘、晦涩的 *编程语言(programming languages)* 中各种符号表达式精心构建的，它们被用来描述可以完成我们所关心任务的计算过程。
+对于一个计算过程的理解可以参照巫师如何理解小精灵。小精灵并非由物质组成的实体，它们无法被看见和触摸。但是，它们却又是实际存在的。它们能完成智力性的任务、可以回答问题，并且通过在银行付钱或者控制工厂里机器人的手臂来对世界产生实际影响。我们用来“变出”过程的程序就如同巫师们用来召唤小精灵的咒语一样。程序是由神秘、晦涩的 *编程语言(programming languages)* 中各种符号表达式精心构建的，它们被用来描述可以完成我们所关心任务的计算过程。
 
 在一台正常工作的计算机里，一个计算过程会严格且准确地的执行对应的程序。因此，“菜鸟”程序员就像巫师的学徒一样，必须经过事先学习，以图理解和预测他们通过咒语使用的各种“魔法”的后果。程序中即使很微小的的错误都可能导致复杂且无法预料的后果。
 
@@ -23,7 +23,7 @@
 
 我们需要合适的语言来描述过程，为了达成这个目的，我们将会使用编程语言JavaScript。就如我们每天会用自然语言（英语，法语，日语）来表达我们日常的想法，用数学符号来描述数量的概念，我们的过程将会使用JavaScript来描述。JavaScript产生于1990年早期，通过内嵌于网页内部作为脚本，用来控制网页浏览器的行为。这门语言由Brendan Eich设计出，开始被称为Mocha，后改为*LiveScript*，最终命名为JavaScript。这个名字“JavaScript”是属于Sun Microsystems公司的一个商标。
 
-尽管JavaScript作为一门语言，其诞生时的目的是为了控制网页浏览器，但JavaScript依然是一个通用编程语言。一个JavaScript *解释器(interpreter)* 就是一部用来执行由JavaScript编写的过程的机器。第一个JavaScript解释器是由Eich就职于Netscape Communications公司期间实现的，用在Netscape Navigator网页浏览器上。JavaScript的主要语言特性继承自Scheme和Self编程语言。Scheme是Lisp的一个方言，并且被当作原版SICP书籍的编程语言。从Scheme里，JavaScript继承了其大部分的函数式设计原则，例如静态作用域、一等函数公民和动态类型，这种继承的直接结果就是本书中的程序可以很直接、简单的从原书中的Scheme语言翻译成JavaScript语言。
+尽管JavaScript作为一门语言，其诞生时的目的是为了控制网页浏览器，但JavaScript依然是一个通用编程语言。一个JavaScript *解释器(interpreter)* 就是一部用来执行由JavaScript编写的过程的机器。第一个JavaScript解释器是由Eich就职于Netscape Communications公司期间实现的，用在Netscape Navigator网页浏览器上。JavaScript的主要语言特性继承自Scheme和Self编程语言。Scheme是Lisp的一个方言，并且被当作原版《SICP》书籍的编程语言。从Scheme里，JavaScript继承了其大部分的函数式设计原则，例如静态作用域、一等函数公民和动态类型，这种继承的直接结果就是本书中的程序可以很直接、简单的从原书中的Scheme语言翻译成JavaScript语言。
 
 JavaScript仅仅与Java在表面上有相似之处，最大的关联点就是名字中都带个Java而已。JavaScript和Java都沿用了C语言的程序块(block structure)结构。与Java和C这种编译成底层语言后执行的过程相比，JavaScript常常是被浏览器内建的解释器解释执行。在Netscape Navigator浏览器出现后，其他网页浏览器也开始提供内嵌的JavaScript解释器，包括微软的Internet Explorer浏览器（微软称其为JScript而非JavaScript）。JavaScript因为可以控制浏览器的行为而普及后，广受大众欢迎，进而引起了对JavaScript进行标准化的工作，最终产生了一个标准化的语言标准，被称为 *ECMAScript*。第一版的ECMAScript(ECMA 1997)标准由Guy Lewis Steele Jr. 主导制定于1997年6月。本书使用的是第六版，由Allen Wirfs-Brock主导制定，在2015年6月的ECMA大会上被接受。
 
