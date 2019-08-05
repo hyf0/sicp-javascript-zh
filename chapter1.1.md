@@ -206,9 +206,9 @@ const circumference = 2 * pi * radius;
 circumference;
 ```
 
-常量声明是我们语言中最简单的抽象手段，它允许我们能使用简单的名字来指代复合运算结果，例如上方的 circumference。通常，计算对象可能有着非常复杂的结构，当我们想要使用这种计算对象时，如果每次都要记住和重复它们的细节，这会对我们造成的极度的不便。实际上，构建复杂的程序也就是逐步地构建复合的、渐增复杂度的计算对象。我们的解释器使得这种逐步构建程序的方式变得容易，因为通过一系列和程序的连续交互，我们可以渐进的构建起名字-对象的联系。
+常量声明是我们语言中最简单的抽象手段，它允许我们能使用简单的名字来指代复合运算结果，例如上方的 circumference。通常，计算对象可能有着非常复杂的结构，当我们想要使用这种计算对象时，如果每次都要记住和重复它们的细节，这会对我们造成的极度的不便。实际上，构建复杂的程序也就是逐步地构建复合的、渐增复杂度的计算对象。我们的解释器使得这种逐步构建程序的方式变得容易，因为通过连续地与程序进行交互，我们可以渐进的构建起名字-对象之间的联系。
 
-需要明确的一点——在名字和值之间创建联系，在稍晚的时候使用它们意味着解释器需要维持某种记忆来保持追踪 名字-值 的配对。这种记忆被称为环境(更准确的讲是全局环境，因为我们即将看到一个计算过程可能包含着大量不同的环境)。<sup id="1-1-2a1">[[1]](#1-1-2b1)</sup>
+需要明确的一点——在名字和值之间创建联系，在稍晚的时候使用它们意味着解释器需要某种记忆机制来保持追踪 名字-值 间的配对。这种记忆机制被称为环境(更准确的讲是全局环境，因为我们即将看到一个计算过程可能包含着大量不同的环境)。<sup id="1-1-2a1">[[1]](#1-1-2b1)</sup>
 
 <small id="1-1-2b1">
 
@@ -420,7 +420,7 @@ The process we have just described is called the substitution model for function
 - The purpose of the substitution is to help us think about function application, not to provide a description of how the interpreter really works. Typical interpreters do not evaluate function applications by manipulating the text of a function to substitute values for the parameters. In practice, the substitution is accomplished by using a local environment for the parameters. We will discuss this more fully in chapters 3 and 4 when we examine the implementation of an interpreter in detail.
 - Over the course of this book, we will present a sequence of increasingly elaborate models of how interpreters work, culminating with a complete implementation of an interpreter and compiler in chapter 5. The substitution model is only the first of these models—a way to get started thinking formally about the evaluation process. In general, when modeling phenomena in science and engineering, we begin with simplified, incomplete models. As we examine things in greater detail, these simple models become inadequate and must be replaced by more refined models. The substitution model is no exception. In particular, when we address in chapter 3 the use of functions with mutable data, we will see that the substitution model breaks down and must be replaced by a more complicated model of function application.<sup id="1-1-5a1">[[1]](#1-1-5b1)</sup>
 
-## Applicative order versus normal order
+### Applicative order versus normal order
 
 According to the description of evaluation given above, the interpreter first evaluates the function and argument expressions and then applies the resulting function to the resulting arguments. This is not the only way to perform evaluation. An alternative evaluation model would not evaluate the operands until their values were needed. Instead it would first substitute argument expressions for parameters until it obtained an expression involving only operators, and would then perform the evaluation. If we used this method, the evaluation of
 
