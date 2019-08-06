@@ -69,9 +69,9 @@
 
 [Click here to run](https://sourceacademy.nus.edu.sg/playground#chap=1&prgrm=FAJgdA7ABA1FCMAGA3MYQ)
 
-上述包含着其他表达式的表达式被称为组合式。一个有着 *运算符(operator)* 在中间，*运算对象(operand)* 在两边形状的组合式被称为 *运算符组合式(operator combinations)*。一个运算符组合式的求值结果取决于运算符对应的函数，以及应用于函数的被称为*参数(arguments)*的运算对象。
+上述包含着其他表达式的表达式被称为组合式。一个有着 *运算符 operator* 在中间，*运算对象 operand* 在两边形状的组合式被称为 *运算符组合式 operator combinations*。一个运算符组合式的求值结果取决于运算符对应的函数，以及应用于函数的被称为*参数 arguments*的运算对象。
 
-上述关于将运算符放置于运算对象中间位置的约定被称为 *中缀(infix)* 记法。它与读者在上学时熟悉的常规数学记法一样。和数学一样，运算符组合式可以 *嵌套(nested)* 的，也就是说，运算符组合式接受的参数同样也可以是运算符组合式。
+上述关于将运算符放置于运算对象中间位置的约定被称为 *中缀 infix* 记法。它与读者在上学时熟悉的常规数学记法一样。和数学一样，运算符组合式可以 *嵌套 nested* 的，也就是说，运算符组合式接受的参数同样也可以是运算符组合式。
 
 
 ```js
@@ -145,9 +145,9 @@
 
 </div>
 
-## 1.1.2 命名和环境(Environment)
+## 1.1.2 命名和环境 Environment
 
-对于一门编程语言来说，相当关键的一方面就是其提供的使用名字来指代一个计算对象的手段，而我们所接触的第一个这种手段就是*常量 constants*。我们称这种命名标识了一个常量，其值是一个对象。
+对于一门编程语言来说，相当关键的一方面就是其提供的使用命名来指代一个计算对象的手段，而我们所接触的第一个这种手段就是*常量 constants*。我们称这种命名标识了一个常量，其值是一个对象。
 
 在JavaScript中，我们使用 *常量声明 constant declarations* 语句，键入
 
@@ -155,9 +155,9 @@
 const size = 2;
 ```
 
-使得解释器将值 **2** 与名字 **size** 关联起来。这个常量声明的作用就是创造关联，而非计算出一个表达式语句特定的值。JavaScript的语言规范要求对 *常量声明* 语句的求值结果为 *undefined*
+使得解释器将值 **2** 与命名 **size** 关联起来。这个常量声明的作用就是创造关联，而非计算出一个表达式语句特定的值。JavaScript的语言规范要求对 *常量声明* 语句的求值结果为 *undefined*
 
-一旦名字 **size** 与 数字 **2** 关联起来，我们可以通过名字 **size** 来指代值 **2**
+一旦命名 **size** 与 数字 **2** 关联起来，我们可以通过命名 **size** 来指代值 **2**
 
 ```js
 size
@@ -169,7 +169,7 @@ or
 5 * size;
 ```
 
-当然，在名字 **size** 可以被用在表达式之前，JavaScript解释器必须先执行 **size** 的常量声明。对于本书来说，为了简洁性，需要被事先执行的声明语句被刻意忽略了。不过，为了查看求值后的结果，你可以点击 Click here to run。在浏览器新打开的标签页中的程序会包含所有需要的语句。因此，作为点击下方的结果
+当然，在命名 **size** 可以被用在表达式之前，JavaScript解释器必须先执行 **size** 的常量声明。对于本书来说，为了简洁性，需要被事先执行的声明语句被刻意忽略了。不过，为了查看求值后的结果，你可以点击 Click here to run。在浏览器新打开的标签页中的程序会包含所有需要的语句。因此，作为点击下方的结果
 
 ```js
 5 * size;
@@ -206,9 +206,9 @@ const circumference = 2 * pi * radius;
 circumference;
 ```
 
-常量声明是我们语言中最简单的抽象手段，它允许我们能使用简单的名字来指代复合运算结果，例如上方的 circumference。通常，计算对象可能有着非常复杂的结构，当我们想要使用这种计算对象时，如果每次都要记住和重复它们的细节，这会对我们造成的极度的不便。实际上，构建复杂的程序也就是逐步地构建复合的、渐增复杂度的计算对象。我们的解释器使得这种逐步构建程序的方式变得容易，因为通过连续地与程序进行交互，我们可以渐进的构建起名字-对象之间的联系。
+常量声明是我们语言中最简单的抽象手段，它允许我们能使用简单的命名来指代复合运算结果，例如上方的 circumference。通常，计算对象可能有着非常复杂的结构，当我们想要使用这种计算对象时，如果每次都要记住和重复它们的细节，这会对我们造成的极度的不便。实际上，构建复杂的程序也就是逐步地构建复合的、渐增复杂度的计算对象。我们的解释器使得这种逐步构建程序的方式变得容易，因为通过连续地与程序进行交互，我们可以渐进的构建起命名-对象之间的联系。
 
-需要明确的一点——在名字和值之间创建联系，在稍晚的时候使用它们意味着解释器需要某种记忆机制来保持追踪 名字-值 间的配对。这种记忆机制被称为环境(更准确的讲是全局环境，因为我们即将看到一个计算过程可能包含着大量不同的环境)。<sup id="1-1-2a1">[[1]](#1-1-2b1)</sup>
+需要明确的一点——在命名和值之间创建联系，在稍晚的时候使用它们意味着解释器需要某种记忆机制来保持追踪 命名-值 间的配对。这种记忆机制被称为环境(更准确的讲是全局环境，因为我们即将看到一个计算过程可能包含着大量不同的环境)。<sup id="1-1-2a1">[[1]](#1-1-2b1)</sup>
 
 <div id="1-1-2b1">
 
@@ -255,17 +255,17 @@ circumference;
 
 在常量声明中的字符串 “**const**” 之所以加粗，是为了指明 const 是JavaScript中的一个 *关键字 keyword*。不同关键字有着其特殊的含义，因此是被保留的，不能被用作命名。一个关键字或多个关键字的组合指示了解释器来特殊对待这些单独的语句。每种关键字语句都有属于自身的求值规则。各种各样的语句(每一个都关联着自身的求值规则)构成了一门编程语言的语法。
 
-## 1.1.4 Functions
+## 1.1.4 函数
 
-We have identified in JavaScript some of the elements that must appear in any powerful programming language:
+我们已经在JavaScript语言中见过了在任何强大编程语言中都会出现的元素：
 
-- Numbers and arithmetic operations are primitive data and functions.
-- Nesting of combinations provides a means of combining operations.
-- Constant declarations that associate names with values provide a limited means of abstraction.
+- 作为基础数据和函数的数字和和算术运算符。
+- 可以嵌套的组合式提供组合各种操作的手段。
+- 可以在命名和值之间创建联系的常量声明，提供了一种受限的抽象手段
 
-Now we will learn about *function declarations*, a much more powerful abstraction technique by which a compound operation can be given a name and then referred to as a unit.
+现在我们将要学习 *函数声明 function declarations*，一种更加强大的抽象技术，使得复合操作可以被命名和以单元的形式被引用。
 
-We begin by examining how to express the idea of "squaring". We might say, "To square something, take it times itself." This is expressed in our language as square
+我们的学习开始于，研究如何表达“平方 squaring”的想法。我们也许会说，“要求平方某物，即要求它乘以自身”。在我们的编程语言中，平方的表达如下：
 
 ```js
 function square(x) {
@@ -273,48 +273,53 @@ function square(x) {
 }
 ```
 
-We can understand this in the following way:
+我们可以按照以下的方式理解这一表述
 
 ```js
 function square(    x   ) { return x    *     x; }
 //  ^       ^       ^         ^    ^    ^     ^
 // To    square something,  take   it times itself.
+// 为了  平方   某物         要求   它  乘以  自身
 ```
-We have here a *compound function*, which has been given the name **square**. The function represents the operation of multiplying something by itself. The thing to be multiplied is given a local name, **x**, which plays the same role that a pronoun plays in natural language. Evaluating the declaration creates this compound function and associates it with the name square.<sup id="1-1-4a1">[[1]](#1-1-4b1)<sup>
 
-Our simplest form of a function declaration is
+这里，我们有了一个名叫 **square** 的复合函数。这个函数代表着将一个事物乘以自身的操作。被乘的事物被给予了一个本地命名 **x**，其作用和自然语言中的代词相同。求值函数声明语句会创建一个复合函数，然后将其与命名 **square** 联系在一起。<sup id="1-1-4a1">[[1]](#1-1-4b1)<sup>
 
-> function *name*( *parameters* ) { return *expression*; }
+我们最简单的一个函数声明格式如下
 
-The *name* is a symbol to be associated with the function in the environment.<sup id="1-1-4a2">[[2]](#1-1-4b1)</sup> The *parameters* are the names used within the body of the function to refer to the corresponding arguments of the function. The *expression* after the keyword **return** is the *return* expression that will yield the value of the function application when the *parameters* are replaced by the arguments to which the function is applied.<sup id="1-1-4a3">[[3]](#1-1-4b1)</sup> The parameters are grouped within parentheses and separated by commas, just as they would be in an actual call to the function being declared.
+> function *name* ( *parameters* ) { return *expression*; }
 
-Having declared the square function, we can now use it in a *function application expressio*n, which we turn into a statement using a semicolon:
+> function *函数名* ( *参数* ) { return *表达式*; }
+
+*name* 是一个将会与函数连接在一起的符号，存储在环境中。<sup id="1-1-4a2">[[2]](#1-1-4b1)</sup> *parameters* 是在函数内部的命名，指向函数对应位置的参数。在关键字 **return** 后的 *expression* 是 *返回表达式 return expression*，当函数被调用时，其形式参数被给予的实际参数替换，返回表达式会产生相应的值。<sup id="1-1-4a3">[[3]](#1-1-4b1)</sup>参数组织在括号内，由逗号隔开，就和它们在声明后的函数被调用后时一样。
+
+在声明了 square 函数后，现在，我们可以在 *函数调用表达式 function application expression* 中使用这个函数。通过分号，我们可以将函数调用表达式转换成一个语句：
 
 ```js
 square(21);
 ```
 
-The name square is the function expression of the application, and 21 is the argument expression.
+命名 **square** 是函数表达式，**21** 是参数表达式。
+
 
 ```js
 square(2 + 5);
 ```
 
-Here, the argument expression is itself a compound expression, the operator expression 2 + 5.
+现在，参数变成了一个复合表达式，即表达式 2 + 5。
 
 ```js
 square(square(3));
 ```
 
-Of course application expressions can also serve as argument expressions.
+当然，函数表达式同样可以被当作参数。
 
-We can also use square as a building block in declaring other functions. For example, x^2+y^2 can be expressed as
+同样的，我们可以将 square 当作基本构件去声明其他函数。举个例子，x^2+y^2 可以被表达为
 
 ```js
 square(x) + square(y);
 ```
 
-We can easily declare a function sum_of_squares that, given any two numbers as arguments, produces the sum of their squares:
+很简单地，我们可以声明一个 sum_of_squares 函数，在给定两个数字参数后，返回它们的平方和
 
 ```js
 function sum_of_squares(x,y) {
@@ -322,106 +327,105 @@ function sum_of_squares(x,y) {
 }
 ```
 
-Now we can use sum_of_squares as a building block in constructing further functions:
-
+现在，我们可以将 sum_of_squares 当作基本构件去构造更高层次的函数：
 
 ```js
 function f(a) {
     return sum_of_squares(a + 1, a * 2);
 }
 ```
-
-The application of functions such as **sum_of_squares(3,4)** is—after operator combination—the second kind of combination of expressions into larger expressions that we encounter. In addition to compound functions, JavaScript provides a number of primitive functions that are built into the interpreter. An example is the function **math_log** that computes the natural logarithm of its argument.<sup id="1-1-4a4">[[4]](#1-1-4b1)</sup> Evaluating the application expression **math_log(1)** results in the number 0. Primitive functions are used in exactly the same way as compound functions. Indeed, one could not tell by looking at the definition of **sum_of_squares** given above whether **square** was built into the interpreter, like **math_log**, or defined as a compound function.
-
+函数调用如 **sum_of_squares(3,4)**，是继运算符组合式后，我们遇到的第二种关于表达式嵌套表达式的组合式。除了复合函数之外，JavaScript还提供了许多内置于解释器中的基本函数。比如函数 **math_log**，它计算给定参数的自然对数。<sup id="1-1-4a4">[[4]](#1-1-4b1)</sup>求值函数调用 **math_log(1)** 会得到结果0。确实，人并不能通过查看 **sum_of_squares** 函数的定义，判断出 **square** 函数是像 **math_log** 函数一样内建于解释器，还是说被定义为复合函数。
 
 <small id="1-1-4b1">
 
-[[1]](#1-1-4a1) Observe that there are two different operations being combined here: we are creating the function, and we are giving it the name square. It is possible, indeed important, to be able to separate these two notions—to create functions without naming them, and to give names to functions that have already been created. We will see how to do this in section 1.3.2.
-<br>
+[[1]](#1-1-4a1) 注意，这里有两种不同操作被绑定在一起了：创建函数，给这个函数命名。将这两个概念分开是很重要的——不给予名字的情况下创建函数和，对已创建的函数命名。我们会在[*这里应连接到*1.3.2]()节看到怎么做。
 
-[[2]](#1-1-4a2) Throughout this book, we will describe the general syntax of programs by using italic symbols—e.g., name—to denote the slots in the expression to be filled in when such an expression is actually used.
-<br>
+[[2]](#1-1-4a2) 贯穿本书，我们在描述程序的语法时，会使用斜体符号(比如 *name*)作为表达式中的占位符，每一个都代表着表达式在被实际使用时需要被填充的位置。
 
-[[3]](#1-1-4a3) We shall see in the next section that the body of the function can be a sequence of statements. In this case, the interpreter evaluates each statement in the sequence in turn until a return statement determines the value of the function application.
-<br>
+[[3]](#1-1-4a3) 在下一节中，我们将看到函数体可以是一系列语句。在这种情况下，解释器依次求值序列中的每个语句，直到 return语句 确定函数调用的值。
 
-[[4]](#1-1-4a4) The Source language used in this adaptation introduces names math_* for all functions and constants in JavaScript's Math library.
+[[4]](#1-1-4a4) 本书使用的 Source 编程语言引入了命名 math_* 来替换JavaScript Math库中的所有函数和常量。
+
+
 </small>
 
-## 1.1.5 The Substitution Model for Function Application
+## 1.1.5 函数调用的代换模型
 
-To evaluate an application combination, the interpreter follows a similar process as for operator combinations, which we described in section [1.1.3](#title1-1-3). That is, the interpreter evaluates the elements of the combination and applies the function (which is the value of the function expression) to the arguments (which are the values of the argument expressions of the application combination).
+为了求值一个调用组合式 application combination，解释器遵循着与求值运算符组合式相似的过程，描述于章节[1.1.3](#title1-1-3)。也就说解释器求值组合式中的每一个元素，然后将参数(组合式参数处表达式的求值结果)应用到函数(函数表达式的求值结果)上。
 
 In more detail, the interpreter proceeds as follows when evaluating application combinations:
 
-- To evaluate an application combination of the form
-- > *function-expression* ( *argument-expressions* )
-- do the following:
-    1. Evaluate the function expression of the application combination, resulting in the function to be applied.
-    2. Evaluate the argument expressions of the combination.
-    3. Apply the function to the arguments:
-        - If the function is primitive, we simply apply the corresponding mathematical function to the arguments.
-        - If the function is compound, we evaluate the return expression of the function with each parameter replaced by the corresponding argument.
+更详细地将，在求值调用组合式时，解释器按照以下规则运行：
 
-To illustrate this process, let's evaluate the application combination
+- 为了求值下方这种形式的调用组合式
+- > *function-expression* ( *argument-expressions* )
+- 执行以下步骤:
+    1. 求值调用组合式中的函数表达式，得到将被调用的函数
+    2. 求值调用组合式的参数表达式
+    3. 将函数应用于参数:
+        - 如果是基本函数，我们只需简单将相应的数学函数应用于参数。
+        - 如果是复合函数，在形式参数被实际参数替换后，我们求值 return 处的表达式。
+
+为了说明这个过程，我们来求值这个调用组合式
 
 ```js
 f(5);
 ```
 
-Evaluating the name f results in the function declared in section 1.1.4. Evaluating the argument expression 5 yields the argument value 5. Now, we retrieve the return expression of f:
+求值命名 f，得到一个函数(于1.1.4节声明)。求值参数表达式 5，产生对应的参数值 5。现在，我们获取到函数 f 在 return 处的表达式
 
 ```js
 sum_of_squares(a + 1, a * 2)
 ```
 
-in which we replace the parameter a by the argument 5:
+在此，我们将形式参数 a 替换成实际参数 5
 
 ```js
 sum_of_squares(5 + 1, 5 * 2)
 ```
 
-Thus the problem reduces to the evaluation of an application combination with two arguments and a function expression **sum_of_squares**. Evaluating this combination involves three subproblems. We must evaluate the function expression to get the function to be applied, and we must evaluate the argument expressions to get the arguments. Now **5 + 1** produces **6** and **5 * 2** produces **10**, so we must apply the **sum_of_squares** function to **6** and **10**. These values are substituted for the parameters **x** and **y** in the return expression of **sum_of_squares**, reducing the expression to
+因此，问题被简化成对带有两个参数和函数表达式 **sum_of_squares** 的调用组合式求值的问题。对这个组合式的求值包含了三个子问题。我们必须求值函数表达式来得到将被调用的函数，我们同样必须求值参数表达式来得到实际参数。现在 **5 + 1** 产生值 **6**，**5 * 2** 产生值 **10**，所以我们必须将 **6** 和 **10** 应用于函数 **sum_of_squares**。这些值会替换 **sum_of_squares** return 处表达式的形式参数 **x** 和 **y**，表达式被简化成
 
 ```js
 square(6) + square(10)
 ```
-If we use the declaration of square once, this reduces to
+如果我们将 square 函数的声明展开一次，再次被简化为
 
 ```js
 (6 * 6) + square(10)
 ```
 
-which reduces by multiplication to
+在进行过乘法后，简化为
 
 ```js
 36 + square(10)
 ```
 
-A second application of square yields
+第二次 square 函数调用后，产生出
 
 ```js
 36 + (10 * 10)
 ```
 
-which reduces by multiplication to
+再次进行过乘法后，简化为
 
 ```js
 36 + 100
 ```
 
-and finally by addition to
+最终进行加法，得到
 
 ```js
 136
 ```
 
-The process we have just described is called the substitution model for function application. It can be taken as a model that determines the "meaning" of function application, insofar as the functions in this chapter are concerned. However, there are two points that should be stressed:
+我们刚刚描述过程被称为函数调用的代换模型。就本章的函数而言，这个代换过程作为确定函数“意义”的模型足够了。但是，有两点值得强调：
 
-- The purpose of the substitution is to help us think about function application, not to provide a description of how the interpreter really works. Typical interpreters do not evaluate function applications by manipulating the text of a function to substitute values for the parameters. In practice, the substitution is accomplished by using a local environment for the parameters. We will discuss this more fully in chapters 3 and 4 when we examine the implementation of an interpreter in detail.
-- Over the course of this book, we will present a sequence of increasingly elaborate models of how interpreters work, culminating with a complete implementation of an interpreter and compiler in chapter 5. The substitution model is only the first of these models—a way to get started thinking formally about the evaluation process. In general, when modeling phenomena in science and engineering, we begin with simplified, incomplete models. As we examine things in greater detail, these simple models become inadequate and must be replaced by more refined models. The substitution model is no exception. In particular, when we address in chapter 3 the use of functions with mutable data, we will see that the substitution model breaks down and must be replaced by a more complicated model of function application.<sup id="1-1-5a1">[[1]](#1-1-5b1)</sup>
+- 代换模型的目的是帮助我们思考函数调用，而非提供一个解释器，在实际上，如何工作的描述。典型的解释器并不会通过修改函数定义时的文本来替换形式参数的值。实际上，对形式参数的代换是通过使用本地环境完成的。当我们在第三章和第四章，详细研究解释器的实现时，我们会讨论与之相关的完整内容。
 
-### Applicative order versus normal order
+- 随着本书进度不断增加，我们将提供一系列越来越精细的解释器如何工作的模型，最后在第5章中实现完整的解释器和编译器。代换模型只是这些模型中的第一个——一个开始正式思考求值过程的途径。一般而言，一般而言，在对科学和工程中的现象进行建模时，我们从简化的，不完整的模型开始。当我们详细研究事物时，这些简单的模型变得不充分，必须用更精细的模型来代替。代换模型也不例外。特别是，当我们在第三章讨论使用带有可变数据的函数时，我们将看到代换模型崩溃，必须替换为更复杂的函数调用模型。<sup id="1-1-5a1">[[1]](#1-1-5b1)</sup>
+
+### 应用序与正则序
 
 According to the description of evaluation given above, the interpreter first evaluates the function and argument expressions and then applies the resulting function to the resulting arguments. This is not the only way to perform evaluation. An alternative evaluation model would not evaluate the operands until their values were needed. Instead it would first substitute argument expressions for parameters until it obtained an expression involving only operators, and would then perform the evaluation. If we used this method, the evaluation of
 
