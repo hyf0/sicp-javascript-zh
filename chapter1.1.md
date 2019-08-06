@@ -234,26 +234,26 @@ circumference;
 (2 + 4 * 6) * (3 + 12);
 ```
 
-requires that the evaluation rule be applied to four different combinations. We can obtain a picture of this process by representing the combination in the form of a tree, as shown in Figure 1.1. Each combination is represented by a node with branches corresponding to the operator and the operands of the operator combination stemming from it. The terminal nodes (that is, nodes with no branches stemming from them) represent either operators or numbers. Viewing evaluation in terms of the tree, we can imagine that the values of the operands percolate upward, starting from the terminal nodes and then combining at higher and higher levels. In general, we shall see that recursion is a very powerful technique for dealing with hierarchical, treelike objects. In fact, the "percolate values upward" form of the evaluation rule is an example of a general kind of process known as *tree accumulation*.
+要求将求值规则应用于四个不同的组合式。将组合式以树的形式表示出来，我们可以得到一张求值过程的图片，见[图1.1](#figure1-1)。每个组合式以一个节点作为表示，由其延伸出的枝干分别指向运算符组合式的运算符和运算对象。末端节点(就是没有枝干的节点)代表着运算符或者数字。从树的角度来观察求值过程，可以看出运算对象的求值结果，从末端节点开始，向上方“渗出”，逐层的组合起来。通常，对于层次形或树形对象来讲，我们会看到递归是一种非常强大的技术来处理它们。实际上，“向上方渗出值”形式的求值规则通常被称为 *树形积累 tree accumulation*。
 
-<div align="center">
+<div id="figure1-1" align="center">
 
 ![Tree representation, showing the value of each subexpression.](./images/ch1_1_3-1.png)
 
-<p>Figure1.1 Tree representation, showing the value of each subexpression.</p>
+<p>图1.1 树形表示, 展示了每个子表达式的值</p>
 
 </div>
 
-Next, observe that the repeated application of the first step brings us to the point where we need to evaluate, not operator combinations, but primitive expressions such as numerals or names. We take care of the primitive cases by stipulating that
+接下来，值得注意的是，重复应用求值规则的第一步，总将我们带到需要进行求值的基本表达式，如数字或命名，而非其他的运算符组合式。我们作出以下规定来处理这些基本情况
 
-- the values of numerals are the numbers that they name,
-- the values of names are the objects associated with those names in the environment.
+- 数字的值就是数字本身代表的数值，
+- 命名的值是，在某种环境下，与此命名相关联的那个对象
 
-Notice the role of the environment in determining the meaning of the names in expressions. In JavaScript, it is meaningless to speak of the value of an expression such as **x + 1** without specifying any information about the environment that would provide a meaning for the name x. As we shall see in chapter 3, the general notion of the environment as providing a context in which evaluation takes place will play an important role in our understanding of program execution.
+注意，环境的作用就是决定表达式中各个命名的含义。在JavaScript中，谈论 **x + 1** 的值是多少，却没有提供环境信息指明命名x的含义，毫无意义。我们将会在第三章看到，环境 environment 是一个普遍性的概念，在解释器求值时提供了一个 *上下文 context*。因此，环境对于理解程序如何执行是至关重要的。
 
-Notice that the evaluation rule given above does not handle constant declarations. For instance, evaluating **const x = 3**; does not apply the = operator to two arguments, one of which is the value of the name x and the other of which is 3, since the purpose of the constant declaration is precisely to associate x with a value. (That is, the part **x = 3** in the constant declaration **const x = 3**; is not an operator combination.)
+注意，上述求值规则并不处理常量声明。举个例子，求值 **const x = 3**；并没有将 命名x 和 数字3 两个参数应用到运算符 = 上，因为常量声明的目的是在命名x与某个值之间创建一种联系。(也就是说，常量声明 **const x = 3;** 中的 **x = 3** 并不是运算符组合式。)
 
-The string "const" in the constant declaration is rendered in bold letters to indicate that it is a *keyword* in JavaScript. Keywords are reserved words that carry a particular meaning, and thus cannot be used as names. A keyword or a combination of keywords instructs the JavaScript interpreter to treat the respective statement in a special way. Each such syntactic form has its own evaluation rule. The various kinds of statements (each with its associated evaluation rule) constitute the syntax of the programming language.
+在常量声明中的字符串 “**const**” 之所以加粗，是为了指明 const 是JavaScript中的一个 *关键字 keyword*。不同关键字有着其特殊的含义，因此是被保留的，不能被用作命名。一个关键字或多个关键字的组合指示了解释器来特殊对待这些单独的语句。每种关键字语句都有属于自身的求值规则。各种各样的语句(每一个都关联着自身的求值规则)构成了一门编程语言的语法。
 
 ## 1.1.4 Functions
 
