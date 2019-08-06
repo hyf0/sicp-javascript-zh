@@ -1,4 +1,4 @@
-> 来源：[The Elements of Programming](https://www.comp.nus.edu.sg/~cs1101s/sicp/chapters/2)
+> 来源：[The Elements of Programming](https://sicp.comp.nus.edu.sg/chapters/2)
 
 > 译者：[塔希](https://github.com/iheyunfei/)
 
@@ -14,7 +14,7 @@
 
 编程时，我们与这两种元素打交道——函数和数据（稍后，我们会发现它们之间的的区别并没有那么明显）。通俗的讲，数据是一种需要被我们操控、处理的“东西”，函数则是一系列规则（对于如何操控、处理数据）的描述。因此，任何强力的编程语言都要有能力表述基本的数据和函数，并且，拥有对函数和数据进行组合和抽象的手段。
 
-本章中，为了可以专注于构建函数的规则，我们仅仅处理简单的数值型数据<sup id="1-1a1">[[1]](#1-1b1)</sup>。随后的章节中，我们会认识到这些规则适用于复合的数据。
+本章中，为了可以专注于构建函数的规则，我们仅仅处理简单的数值型数据<sup id="1-1a1">[[1]](#1-1b1)</sup>。随后的章节中，我们会认识到这些规则适用于复合型数据。
 
 <div id="1-1b1">
 
@@ -24,7 +24,7 @@
 
 ## 1.1.1 表达式
 
-当想要使用JavaScript开始编程时，一种简单的方式是通过与内建于浏览器(也就是你正在浏览本页面使用的)的JavaScript解释器进行互动。JavaScript programs are called statements. 我们已经编写好了一些语句，显示在下方的可以通过鼠标点击深色区域内。通过点击深色区域的JavaScript语句，一个可以对JavaScript语句进行求值的解释器会显示出来，并且可以展示求值后的结果。顺便一提，实现这些功能的程序同样由JavaScript编写；我们称呼这个鼠标点击程序为Script。<sub>(译者注：鉴于兼容性的原因，请通过点击区域下方的 **Click here to run** 来访问对应的JavaScript程序)</sub>
+当想要使用JavaScript开始编程时，一种简单的方式是通过与内建于浏览器(也就是你正在浏览本页面使用的)的JavaScript解释器进行互动。JavaScript程序仅仅是可以被执行的JavaScript语句。我们已经编写好了一些语句，显示在下方的可以通过鼠标点击深色区域内。通过点击深色区域的JavaScript语句，一个可以对JavaScript语句进行求值的解释器会显示出来，并且可以展示求值后的结果。顺便一提，实现这些功能的程序同样由JavaScript编写；我们称呼这个鼠标点击程序为Script。<sub>(译者注：鉴于兼容性的原因，请通过点击区域下方的 **Click here to run** 来访问对应的JavaScript程序)</sub>
 
 有一种JavaScript语句类型称为表达式语句，由一个表达式尾随一个分号组成。一个简单的表达式可以是个数字(更精确的说，这个表达式是由一个数学型符号构成，其代表着一个以10为基数的数值。)如果你要求Script程序显示这个表达式的求值结果
 
@@ -52,7 +52,7 @@
 [Click here to run](https://sourceacademy.nus.edu.sg/playground#chap=1&prgrm=FARgDBAEC0kMxwCwG5jCA)
 
 ```js
-5* 99;
+5 * 99;
 ```
 
 [Click here to run](https://sourceacademy.nus.edu.sg/playground#chap=1&prgrm=FAVgBAVGCc0NzGEA)
@@ -155,7 +155,7 @@
 const size = 2;
 ```
 
-使得解释器将值 **2** 与名字 **size** 关联起来。这个常量声明的作用就是创造关联，而非计算出一个表达式语句特定的值。JavaScript的规范要求对 *常量声明* 语句的求值结果为 *undefined*
+使得解释器将值 **2** 与名字 **size** 关联起来。这个常量声明的作用就是创造关联，而非计算出一个表达式语句特定的值。JavaScript的语言规范要求对 *常量声明* 语句的求值结果为 *undefined*
 
 一旦名字 **size** 与 数字 **2** 关联起来，我们可以通过名字 **size** 来指代值 **2**
 
@@ -210,24 +210,25 @@ circumference;
 
 需要明确的一点——在名字和值之间创建联系，在稍晚的时候使用它们意味着解释器需要维持某种记忆来保持追踪 名字-值 的配对。这种记忆被称为环境(更准确的讲是全局环境，因为我们即将看到一个计算过程可能包含着大量不同的环境)。<sup id="1-1-2a1">[[1]](#1-1-2b1)</sup>
 
-<small id="1-1-2b1">
+<div id="1-1-2b1">
 
 [[1]](#1-1-2a1) 第三章会说明，对于理解解释器如何工作和如何实现解释器，环境的概念是至关重要的。
 
-</small>
+</div>
 
-<div id="title1-1-3">
+<div id="title1-1-3"></div>
 
-## 1.1.3 Evaluating Operator Combinations</div>
+## 1.1.3 运算符组合式的求值
 
-One of our goals in this chapter is to isolate issues about process descriptions. As a case in point, let us consider that, in evaluating operator combinations, the interpreter proceeds as follows.
+在本章节，我们的目标是将计算的描述(与其他概念)孤立出来。比如说，让我们思考下运算符组合式的求值过程。解释器按照下列规则运行。
 
-- To evaluate an operator combination, do the following:
-    1. Evaluate the operand expressions of the combination.
-    2. Apply the function that is denoted by the operator to the arguments that are the values of the operands.
+- 为了求值一个运算符组合式，按照以下步骤：
+    1. 求值运算组合式的“参数”——代表运算对象的子表达式或者说子运算符组合式
+    2. 将运算对象求值后的结果当作参数，调用运算符代表的函数
 
-Even this simple rule illustrates some important points about processes in general. First, observe that the first step dictates that in order to accomplish the evaluation process for an operator expression we must first perform the evaluation process on each operand of the operator combination. Thus, the evaluation rule is recursive in nature; that is, it includes, as one of its steps, the need to invoke the rule itself.
-Notice how succinctly the idea of recursion can be used to express what, in the case of a deeply nested combination, would otherwise be viewed as a rather complicated process. For example, evaluating
+即使如此简单的求值规则也揭示了关于一般计算的一些要点。首先，注意流程的第一步指示了，为了完成对运算符的求值，我们首先要对运算符组合式的每一个“参数(组合式中的运算对象)”进行求值。至此，求值规则自然而然的带有递归性；也就是说，求值规则的步骤暗示了调用规则本身的需要——即将求值规则应用于一个运算符组合式，其第一步是将本规则应用于其子运算符组合式，而对于被应用的子运算符组合式，同样对其子运算符组合式递归的应用本规则。
+
+注意，对于多层嵌套的组合式(通常被认为相当复杂的计算过程)，这种递归的思想在表达如何对其求值是相当简洁的。举个例子，对下方语句求值
 
 ```js
 (2 + 4 * 6) * (3 + 12);

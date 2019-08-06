@@ -1,4 +1,4 @@
-> 来源：[The Elements of Programming](https://www.comp.nus.edu.sg/~cs1101s/sicp/chapters/2)
+> 来源：[Building Abstractions with Functions](https://sicp.comp.nus.edu.sg/chapters/1)
 
 > 译者：[塔希](https://github.com/iheyunfei/)
 
