@@ -7,6 +7,7 @@ module.exports = {
         repo: 'iheyunfei/sicp-javascript-zh',
         // displayAllHeaders: true,
         lastUpdated: true,
+        sidebarDepth: 2,
         sidebar: [
           '/',
           '/foreword',

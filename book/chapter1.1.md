@@ -756,3 +756,229 @@ What behavior will Ben observe with an interpreter that uses applicative-order e
 [[2]](#1-1-6a2) For an expression of the form a (b > 0 ? + : -) b the JavaScript interpreter would not know the precedence of the operator between a and b，and therefore such expressions are not allowed.
 
 </div>
+
+## 1.1.7 例子：牛顿法求平方根
+
+前文所介绍的函数更像常规数学意义上的函数。它们通过一个多个参数确定一个值。但是，在数学函数和计算机函数之间有个很大的差别。计算机函数必须是切实可行的。
+
+举个恰当的例子，思考下关于如何计算平方根的问题。我们可以定义一个 **square-root** 函数如
+
+<div align="center">
+
+![求平方根函数](./images/ch1_1_7-1.png)
+
+<sub>
+译: √x = 某个 y 且能够满足 y≥0 and y<sup>2</sup>=x
+</sub>
+
+</div>
+
+这描述了一个在数学意义上正确无比的函数。我们能够使用这个函数来判别一个数字是否是另一个数字的平方根，或得到一些关于平方根的一般性事实。然而，在另一方面，这个定义并没有描述出一个计算机函数。确实，它并没有告诉我们如何去找一个给定数字的平方根。仅仅用类JavaScript的伪代码重述这个定义并不会带来任何帮助：
+
+```js
+function sqrt(x) {
+    return the y with y >= 0 &&
+                      square(y) === x;
+}
+```
+
+这仅仅是重述了问题。
+
+数学函数和计算机函数的对比，反映出了在描述事物的属性和描述如何去做某件事情之间，存在常规性差异，又或者说，通常被被称为，声明性知识与指令性知识之间的差异。在数学，我们通常关心声明性的(是什么)描述，而在计算机科学中，我们通常关心指令性(怎么做)描述。<sup id="1-1-7a1">[[1]]()</sup>
+
+一个人如何计算出平方根？最通常使用的方式牛顿的逐步逼近法，牛顿法描述了任何时候，对于数字 x 的平方根，我们都有一个猜测值 y，我们通过计算 y 与 x/y 的平均值来进行一些简单的处理，从而来取得一个更好的猜测值(即更加接近实际的平方根)。<sup>[[2]]()</sup> 举个例子，我们可以向下文一样计算2的平方根。假设我们的初始猜测值是1：
+
+<div align="center">
+
+![求解2的平方根的步骤](./images/ch1_1_7-2.png)
+
+</div>
+
+继续这个计算过程，我们可以获得越来越接近平方根的近似值。
+
+现在，让我们用函数来形式化这个过程。我们的函数开始于一个开方数(它的平方根就是我们尝试计算出的答案)和一个猜测值。如果猜测值好到满足我们的目的，我们确定完成计算。如果不够好，我们必须用一个更好的猜测值来重复这个处理过程。我们可以将这些策略写成一个函数：
+
+```js
+function sqrt_iter(guess, x) {
+    return good_enough(guess, x)
+           ? guess
+           : sqrt_iter(improve(guess, x), x);
+}
+```
+
+一个猜测值可以通过计算开方数与旧猜测值的商，然后计算该商与旧猜测值的平均值来改进:
+
+```js
+function improve(guess, x) {
+    return average(guess, x / guess);
+}
+```
+
+以及
+
+```js
+function average(x,y) {
+    return (x + y) / 2;
+}
+```
+
+我们也需要确定我们所说的“足够好 good_enough”是什么意思。下文所述的做法是一个演示，但其并不是一个足够好的测试。(见练习1.7) 其思路是不断改进结果，直到结果的平方值与开方数之间的差值小于一个预先定好的误差值(这里是 0.001)。
+
+```js
+function good_enough(guess, x) {
+    return abs(square(guess) - x) < 0.001;
+}
+```
+
+最终，我们需要一种开始的方式。举个例子，我们总是可以将任何数字平方根的猜测值定为1：
+
+```js
+function sqrt(x) {
+    return sqrt_iter(1, x);
+}
+```
+
+如果我们键入这些声明到解释器中，我们可以像使用其他任意函数一样，使用 **sqrt** 函数：
+
+```js
+sqrt(9);
+```
+
+```js
+sqrt(100 + 37);
+```
+
+```js
+sqrt(sqrt(2) + sqrt(3));
+```
+
+```js
+square(sqrt(1000));
+```
+
+这个 **sqrt** 程序同样阐明了，目前为止，我们已经介绍的简单函数式语言已经足够写出类似C 或 Pascal语言写出的纯粹的数学程序。这也许看起来令人惊讶，因为我们还没有介绍任何指示电脑重复做某件事的迭代(循环)结构。另一方面，函数 **sqrt_iter** 演示了如何在仅仅使用函数调用，不使用其他任何特殊结构的情况下，进行迭代运算。
+
+### 练习
+
+#### Exercise 1.6
+
+Alyssa P. Hacker doesn't like the syntax of conditional expressions, involving the characters ? and :. Why can't I just declare an ordinary conditional function whose application works just like conditional expressions? she asks. Alyssa's friend Eva Lu Ator claims this can indeed be done, and she declares a conditional function as follows:
+
+```js
+function conditional(predicate, then_clause, else_clause) {		    
+    return predicate ? then_clause : else_clause;
+}
+```
+
+Eva demonstrates the program for Alyssa:
+
+```js
+conditional(2 === 3, 0, 5);
+```
+
+evaluates as expected to 5, and
+
+```js
+conditional(1 === 1, 0, 5);
+```
+
+evaluates as expected to 0. Delighted, Alyssa uses conditional to rewrite the square-root program:
+
+```js
+function sqrt_iter(guess, x) {
+    return conditional(good_enough(guess, x),
+                       guess,
+                       sqrt_iter(improve(guess, x),
+                                 x));
+}
+```
+
+What happens when Alyssa attempts to use this to compute square roots? Explain.
+
+<details>
+
+<summary>
+点击查看答案
+</summary>
+
+Any call of sqrt_iter leads immediately to an infinite loop. The reason for this is our applicative-order evaluation. The evauation of the return expression of sqrt_iter needs to evaluate its arguments first, including the recursive call of sqrt_iter, regardless whether the predicate evaluates to true or false. The same of course happens with the recursive call, and thus the function conditional never actually gets applied.
+
+</details>
+
+#### Exercise 1.7
+
+The good_enough test used in computing square roots will not be very effective for finding the square roots of very small numbers. Also, in real computers, arithmetic operations are almost always performed with limited precision. This makes our test inadequate for very large numbers. Explain these statements, with examples showing how the test fails for small and large numbers. An alternative strategy for implementing good_enough is to watch how guess changes from one iteration to the next and to stop when the change is a very small fraction of the guess. Design a square-root function that uses this kind of end test. Does this work better for small and large numbers?
+
+<details>
+
+<summary>
+点击查看答案
+</summary>
+
+The absolute tolerance of 0.001 is too large when computing the square root of a small value. For example, sqrt(0.0001) results in 0.03230844833048122 instead of the expected value 0.01, an error of over 200%.
+
+On the other hand, for very large values, rounding errors might make the algorithm fail to ever get close enough to the square root, in which case it will not terminate terminates.
+
+The following program alleviates the problem by replacing an absolute tolerance with a relative tolerance.
+
+```js
+const error_threshold = 0.01;
+
+function good_enough(guess,x) {
+    return relative_error(guess, improve(guess, x))
+           < error_threshold;
+}
+
+function relative_error(estimate, reference) {
+    return abs(estimate - reference) / reference;
+}
+```
+</details>
+
+#### Exercise 1.8
+
+Newton's method for cube roots is based on the fact that if $y$ is an approximation to the cube root of $x$, then a better approximation is given by the value
+
+<div align="center">
+
+![练习1.8题目附图](./images/ch1_1_7-3.png)
+
+</div>
+
+Use this formula to implement a cube-root function analogous to the square-root function. (In section 1.3.4 we will see how to implement Newton's method in general as an abstraction of these square-root and cube-root functions.)
+
+<details>
+
+<summary>
+点击查看答案
+</summary>
+
+```js
+function good_enough(guess, x) {
+    return abs(cube(guess) - x) < 0.001;
+}
+
+function div3(x, y) {
+     return (x + y) / 3;
+}
+
+function improve(guess, x) {
+    return div3(x / (guess * guess), 2 * guess);
+}
+
+function cube_root(guess, x) {
+    return good_enough(guess, x)
+               ? guess
+               : cuberoot(improve(guess, x), x);
+}
+```
+
+</details>
+
+<div id="1-1-7b1">
+
+[[1]]() Declarative and imperative descriptions are intimately related, as indeed are mathematics and computer science. For instance, to say that the answer produced by a program is "correct" is to make a declarative statement about the program. There is a large amount of research aimed at establishing techniques for proving that programs are correct, and much of the technical difficulty of this subject has to do with negotiating the transition between imperative statements (from which programs are constructed) and declarative statements (which can be used to deduce things). In a related vein, an important current area in programming-language design is the exploration of so-called very high-level languages, in which one actually programs in terms of declarative statements. The idea is to make interpreters sophisticated enough so that, given "what is" knowledge specified by the programmer, they can generate "how to" knowledge automatically. This cannot be done in general, but there are important areas where progress has been made. We shall revisit this idea in chapter 4.
+
+[[2]]() This square-root algorithm is actually a special case of Newton's method, which is a general technique for finding roots of equations. The square-root algorithm itself was developed by Heron of Alexandria in the first century a.d. We will see how to express the general Newton's method as a JavaScript function in section [1.3.4]().
+
+</div>
