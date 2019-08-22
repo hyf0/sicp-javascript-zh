@@ -18,7 +18,7 @@
 
 <div id="1-1b1">
 
-[[1]](#1-1a1) The characterization of numbers as simple data is a barefaced bluff. In fact, the treatment of numbers is one of the trickiest and most confusing aspects of any programming language. Some typical issues involved are these: How large a number can we represent? How many decimal places of accuracy can we represent? Above and beyond these questions, of course, lies a collection of issues concerning roundoff and truncation errors—the entire science of numerical analysis. Since our focus in this book is on large-scale program design rather than on numerical techniques, we are going to ignore these problems. The numerical examples in this chapter will exhibit the usual roundoff behavior that one observes when using arithmetic operations that preserve a limited number of decimal places of accuracy in noninteger operations.
+[[1]](#1-1a1) The characterization of numbers as simple data is a barefaced bluff. In fact，the treatment of numbers is one of the trickiest and most confusing aspects of any programming language. Some typical issues involved are these: How large a number can we represent? How many decimal places of accuracy can we represent? Above and beyond these questions，of course，lies a collection of issues concerning roundoff and truncation errors—the entire science of numerical analysis. Since our focus in this book is on large-scale program design rather than on numerical techniques，we are going to ignore these problems. The numerical examples in this chapter will exhibit the usual roundoff behavior that one observes when using arithmetic operations that preserve a limited number of decimal places of accuracy in noninteger operations.
 
 </div>
 
@@ -114,7 +114,7 @@
 [Click here to run](https://sourceacademy.nus.edu.sg/playground#chap=1&prgrm=FACjGYAIHpIVgJSQFSQExILSQCxINSTgDcwwQA)
 
 
-我们称 +, -, * 和 / 为左结合运算符。
+我们称 +，-，* 和 / 为左结合运算符。
 
 原则上，针对JavaScript解释器的求值能力来讲，表达式的嵌套深度是没有限制的。但对于我们人类来说，我们甚至可以被一些相对简单的嵌套表达式搞迷糊，例如
 
@@ -238,9 +238,9 @@ circumference;
 
 <div id="figure1-1" align="center">
 
-![Tree representation, showing the value of each subexpression.](./images/ch1_1_3-1.png)
+![Tree representation，showing the value of each subexpression.](./images/ch1_1_3-1.png)
 
-<p>图1.1 树形表示, 展示了每个子表达式的值</p>
+<p>图1.1 树形表示，展示了每个子表达式的值</p>
 
 </div>
 
@@ -280,7 +280,7 @@ function square(x) {
 ```js
 function square(    x   ) { return x    *     x; }
 //  ^       ^       ^         ^    ^    ^     ^
-// To    square something,  take   it times itself.
+// To    square something， take   it times itself.
 // 为了  平方   某物         要求   它  乘以  自身
 ```
 
@@ -324,7 +324,7 @@ square(x) + square(y);
 很简单地，我们可以声明一个 sum_of_squares 函数，在给定两个数字参数后，返回它们的平方和
 
 ```js
-function sum_of_squares(x,y) {
+function sum_of_squares(x，y) {
     return square(x) + square(y);
 }
 ```
@@ -333,10 +333,10 @@ function sum_of_squares(x,y) {
 
 ```js
 function f(a) {
-    return sum_of_squares(a + 1, a * 2);
+    return sum_of_squares(a + 1，a * 2);
 }
 ```
-函数调用如 **sum_of_squares(3,4)**，是继运算复合式后，我们遇到的第二种关于表达式嵌套表达式的复合式。除了复合函数之外，JavaScript还提供了许多内置于解释器中的基本函数。比如函数 **math_log**，它计算给定参数的自然对数。<sup id="1-1-4a4">[[4]](#1-1-4b1)</sup>求值函数调用 **math_log(1)** 会得到结果0。确实，人并不能通过查看 **sum_of_squares** 函数的定义，判断出 **square** 函数是像 **math_log** 函数一样内建于解释器，还是说被定义为复合函数。
+函数调用如 **sum_of_squares(3，4)**，是继运算复合式后，我们遇到的第二种关于表达式嵌套表达式的复合式。除了复合函数之外，JavaScript还提供了许多内置于解释器中的基本函数。比如函数 **math_log**，它计算给定参数的自然对数。<sup id="1-1-4a4">[[4]](#1-1-4b1)</sup>求值函数调用 **math_log(1)** 会得到结果0。确实，人并不能通过查看 **sum_of_squares** 函数的定义，判断出 **square** 函数是像 **math_log** 函数一样内建于解释器，还是说被定义为复合函数。
 
 <small id="1-1-4b1">
 
@@ -375,13 +375,13 @@ f(5);
 求值命名 f，得到一个函数(于[1.1.4](#title-1-1-4)节声明)。求值参数表达式 5，产生对应的参数值 5。现在，我们获取到函数 f 在 return 处的表达式
 
 ```js
-sum_of_squares(a + 1, a * 2)
+sum_of_squares(a + 1，a * 2)
 ```
 
 在此，我们将形式参数 a 替换成实际参数 5
 
 ```js
-sum_of_squares(5 + 1, 5 * 2)
+sum_of_squares(5 + 1，5 * 2)
 ```
 
 因此，问题被简化成对带有两个参数和函数表达式 **sum_of_squares** 的调用复合式求值的问题。对这个复合式的求值包含了三个子问题。我们必须求值函数表达式来得到将被调用的函数，我们同样必须求值参数表达式来得到实际参数。现在 **5 + 1** 产生值 **6**，**5 * 2** 产生值 **10**，所以我们必须将 **6** 和 **10** 应用于函数 **sum_of_squares**。这些值会替换 **sum_of_squares** return 处表达式的形式参数 **x** 和 **y**，表达式被简化成
@@ -436,7 +436,7 @@ f(5)
 将会按照以下序列进行
 
 ```js
-sum_of_squares(5 + 1, 5 * 2)
+sum_of_squares(5 + 1，5 * 2)
 
 square(5 + 1)  +  square(5 * 2)
 
@@ -473,17 +473,15 @@ JavaScript使用应用序求值，一部分是因为由于避免了刚才讲的�
 
 <div id="1-1-5b1">
 
-[[1]](#1-1-5a1) Despite the simplicity of the substitution idea, it turns out to be surprisingly complicated to give a rigorous mathematical definition of the substitution process. The problem arises from the possibility of confusion between the names used for the parameters of a function and the (possibly identical) names used in the expressions to which the function may be applied. Indeed, there is a long history of erroneous definitions of substitution in the literature of logic and programming semantics. See Stoy 1977 for a careful discussion of substitution.
+[[1]](#1-1-5a1) Despite the simplicity of the substitution idea，it turns out to be surprisingly complicated to give a rigorous mathematical definition of the substitution process. The problem arises from the possibility of confusion between the names used for the parameters of a function and the (possibly identical) names used in the expressions to which the function may be applied. Indeed，there is a long history of erroneous definitions of substitution in the literature of logic and programming semantics. See Stoy 1977 for a careful discussion of substitution.
 
 [[2]](#1-1-5a2) 在第三章，我们将会介绍 *流处理 stream processing*，一种通过混入一种受限的正则序求值形式，来处理明显“无穷尽”数据结构的方法。
 
 </div>
 
-## 1.1.6 Conditional Expressions and Predicates
-
 ## 1.1.6 条件表达式和谓词
 
-The expressive power of the class of functions that we can declare at this point is very limited, because we have no way to make tests and to perform different operations depending on the result of a test. For instance, we cannot declare a function that computes the absolute value of a number by testing whether the number is negative or not, and taking different actions in each case according to the rule
+现在，对于我们可以声明的函数类别来说，其表达能力是比较受限的，因为我们没有方法作检验，然后根据检验的结果执行不同的运算。例如，我们无法声明一个计算数字绝对值的函数，因为绝对值函数需要通过检验数字是负还是非负，根据以下图示的规则，在每种状况下采取不同的行为
 
 <div align="center">
 
@@ -491,7 +489,9 @@ The expressive power of the class of functions that we can declare at this point
 
 </div>
 
-This construct is a case analysis and can be expressed in JavaScript using a *conditional expression* as follows:
+这种结构是一个 *情景分析 case analysis*，可以使用如下所示的JavaScript中的 *条件表达式 conditional expression* 来表述：
+
+<div id="ch1-1-6-abs"></div>
 
 ```js
 function abs(x) {
@@ -499,55 +499,60 @@ function abs(x) {
 }
 ```
 
-The general form of a conditional expression is
+条件表达式的常规形式是
 
 > *predicate* ? *consequent-expression* : *alternative-expression*
 
-Conditional expressions begin with a *predicate*—that is, an expression whose value is interpreted as either *true* or *false*, two distinguished boolean values in JavaScript.<sup id="1-1-6a1">[[1]](#1-1-6b1)</sup> Note that the primitive boolean expressions true and false trivially evaluate to the boolean values *true* and *false*, respectively. The *predicate* is followed by a question mark, the *consequent-expression*, a colon, and finally the *alternative-expression*.
+> *谓词* ? *结果-表达式* : *替代-表达式*
 
-To evaluate a conditional expression, the interpreter starts by evaluating the *predicate* part of the expression. If the predicate evaluates to true, the interpreter evaluates *consequent-expression*. Otherwise it evaluates *alternative-expression*.
+条件表达式开始于一个 *谓词 predicate* —— 换句话说，一个表达式，这个表达式的值被解释为 *true* 或 *false*，两个存在于JavaScript中，*布尔 boolean* 类型的特殊值
+。<sup id="1-1-6a1">[[1]](#1-1-6b1)</sup> 注意基本布尔表达式 **true** 和 **false** 简单直接地求值为布尔值 *true* 和 *false*。*谓词* 后面尾随着一个问号，*结果-表达式 consequent-expression*，一个冒号，*替代-表达式 alternative-expression*。
 
-The word predicate is used for functions that return true or false, as well as for expressions that evaluate to *true* or *false*. The absolute-value function abs makes use of the primitive predicate >=. This predicate takes two numbers as arguments and tests whether the first number is greater than or equal to the second number, returning *true* or *false* accordingly.
+为了求值一个条件表达式，解释器首先求值表达式的 *谓词* 部分。如果 *谓词* 求值为 *真 true*，解释器则求值 *结果-表达式 consequent-expression*。否则，解释器求值 *替代-表达式 alternative-expression*。
 
-JavaScript provides a number of primitive predicates that work similar to >=, including >, <, <=, and ===. In addition to these primitive predicates, there are logical composition operations, which enable us to construct compound predicates. The three most frequently used are these:
+*谓词* 既可以指代返回 *true* 或 *fasle* 的函数，也可以指代求值为 *true* 或 *fasle* 的表达式。绝对值函数 **abs** 使用了基本谓词 **>=**。这个谓词需要两个数字作为参数，然后检测第一个数字是否大于等于第二个数字，根据结果返回 *true* 或 *fasle*。
 
-- **expression<sub>1</sub>** && **expression<sub>2</sub>** The interpreter evaluates **expression<sub>1</sub>**. If it evaluates to false, the value of the whole expression is false, and **expression<sub>2</sub>** is not evaluated. If **expression<sub>1</sub>** evaluates to true, the value of the whole expression is the value of **expression<sub>2</sub>**.
-- **expression<sub>1</sub>** || **expression<sub>2</sub>** The interpreter evaluates **expression<sub>1</sub>**. If it evaluates to true, the value of the whole expresssion is true, and **expression<sub>2</sub>** is not evaluated. If **expression<sub>1</sub>** evaluates to false, the value of the whole expression is the value of **expression<sub>2</sub>**.
-- **! expression** The value of the *expression* is *true* when expression evaluates to *false*, and *false* otherwise.
+JavaScript提供了类似大量类似 **>=** 的基本谓词，包括 **>，<，<=，** 和 **===**。除了这些基本谓词，还有所谓逻辑组合运算，使得我们能够构建复合谓词。经常被使用的三种逻辑组合运算是这些：
 
-Notice that && and || are not evaluated like arithmetic operators such as +, because their right-hand expression is not always evaluated. The operator !, on the other hand, follows the evaluation rule of section 1.1.3. It is a unary operator, which means that it takes only one argument, whereas the arithmetic operators encountered so far are binary, taking two arguments. The operator ! precedes its argument; we call it a prefix operator. Another prefix operator is the unary "minus" operator, an example of which is the expression -x of the function abs in the beginning of this section.
+- *表达式<sub>1</sub>* **&&** *表达式<sub>2</sub>*：解释器求值 *表达式<sub>1</sub>*。 如果求值为 *false*，则整个表达式的值为 *false*，并且 *表达式<sub>2</sub>* 不会被求值。如果 *表达式<sub>1</sub>* 求值为 *true*，则整个表达式值的等于 *表达式<sub>2</sub>* 的值。
 
-As an example of how these predicates are used, the condition that a number x be in the range 5<x<10 may be expressed as
+- *表达式<sub>1</sub>* **||** *表达式<sub>2</sub>*：解释器求值 *表达式<sub>1</sub>*。如果求值为 *true*，则整个表达式的值为 *true*，并且 *表达式<sub>2</sub>* 不会被求值. 如果 *表达式<sub>1</sub>* 求值为 *false*，则整个表达式值的等于 *表达式<sub>2</sub>* 的值。
+
+- **!** *表达式*：当表达式求值为 *false* 时，整个表达式求值为 *true*，如果是 *false* 则相反.
+
+注意 **&&** 和 **||** 的求值规则和诸如 + 这样的数学运算符并不一样，因为右侧的表达式并非一定会被求值。另一方面，运算符 **!** 遵循着[1.1.3](#title1-1-3)节的求值规则。**!** 是一个 *一元 unary* 运算符，这表示它仅仅接受一个参数。而当前我们遇到数学运符号都是 *二元 binary* 的，接受两个参数。运算符 **!** 的位置在其参数之前；我们称之为 *前缀运算符 prefix operator*。另一个前缀运算符是一元运算符“减”，本小节开始部分的[abs](#ch1-1-6-abs)函数中的表达式 **-x** 就是一个例子。
+
+作为一个展示这些谓词怎么使用的例子，一个判断范围在5 < x < 10之间的数字x的条件可以被表述为
 
 ```js
 x > 5 && x < 10
 ```
 
-Note that the binary operator && has lower precedence than the comparison operators > and <.
+注意，对于比较运算符 **>** 和 **<** 来说，二元运算符 **&&** 相有着相对低的运算优先级。
 
-As another example, we can declare a predicate to test whether one number is not equal to another number.
+另外一个例子，我们可以声明一个谓词函数，来检测一个数字是否等于另一个数字。
 
 ```js
-function not_equal(x, y) {
+function not_equal(x，y) {
     return x > y || x < y;
 }
 ```
 
-or alternatively as
+等价于
 
-```
-function not_equal(x, y) {
+```js
+function not_equal(x，y) {
     return !(x >= y && x <= y);
 }
 ```
 
-Note that the operator !== when applied to two numbers, behaves the same as not_equal.
+注意，当运算符 **!==** 接受两个数字参数时，其行为和函数 **not_equal** 一样。
 
 ### Exercise
 
 #### Exercise1.1
 
-Below is a sequence of statements. Before you click on a statement, predict what the result of its evaluation will be.
+以下是一系列语句。在你求值确定答案之前，预测下这些语句的求值结果。
 
 ```js
 10;
@@ -618,7 +623,7 @@ Note that the statement
 a === 4 ? 6 : b === 4 ? 6 + 7 + a : 25;
 ```
 
-consists of two conditional expressions, where the second one forms the alternative of the first one. If you want to make that clear, you can indent the lines like this:
+consists of two conditional expressions，where the second one forms the alternative of the first one. If you want to make that clear，you can indent the lines like this:
 
 ```js
 a === 4
@@ -673,7 +678,7 @@ Declare a function that takes three numbers as arguments and returns the sum of 
 </summary>
 
 ```js
-function f(x, y, z) {
+function f(x，y，z) {
    return square(x) + square(y) + square(z) -
           // subtract the square of the smallest
           square(x > y ? (y > z ? z : y) : (x > z ? z : x));
@@ -687,14 +692,14 @@ function f(x, y, z) {
 Observe that our model of evaluation allows for application combinations whose function expressions are compound expressions. Use this observation to describe the behavior of the following function:
 
 ```js
-function plus(a, b) { return a + b; }
-function minus(a, b) { return a - b; }
-function a_plus_abs_b(a, b) {
-    return (b >= 0 ? plus : minus)(a, b);
+function plus(a，b) { return a + b; }
+function minus(a，b) { return a - b; }
+function a_plus_abs_b(a，b) {
+    return (b >= 0 ? plus : minus)(a，b);
 }
 ```
 
-Note that in the conditional expression, we cannot directly use the operators + and - instead of the names plus and minus because in infix notation, only operator symbols are allowed in the middle, not compound expressions.<sup id="1-1-6a2">[[2]](#1-1-6b1)</sup>
+Note that in the conditional expression，we cannot directly use the operators + and - instead of the names plus and minus because in infix notation，only operator symbols are allowed in the middle，not compound expressions.<sup id="1-1-6a2">[[2]](#1-1-6b1)</sup>
 
 <details>
 
@@ -702,13 +707,13 @@ Note that in the conditional expression, we cannot directly use the operators + 
 点击查看答案
 </summary>
 
-According to section 1.1.5, evaluation of a application expression proceeds as follows:
+According to section 1.1.5，evaluation of a application expression proceeds as follows:
 
-- Evaluate the function expression of the application combination, resulting in the function to be applied.
+- Evaluate the function expression of the application combination，resulting in the function to be applied.
 - Evaluate the argument expressions of the combination.
 - Evaluate the return expression of the function with each parameter replaced by the corresponding argument.
 
-Thus the evaluation of the application expression a_plus_abs_b(5, -4) (1) evaluates a_plus_abs_b, resulting in the function given above, and (2) the arguments are already values. So we need to evaluate (3) the return expression of the function, with the parameters replaced by the arguments, thus: (-4 >= 0 ? plus : minus)(5, -4). With the same rules, we need to (1) evaluate the function expression, which in this case is the conditional expression -4 >= 0 ? plus : minus. Since the predicate evaluates to false, the function expression evaluates to minus. The arguments, again (2) are already values. Thus we end up evaluating (3) the body of minus with the parameters a and b replaced by 5 and -4, respectively, resulting in 5 - (-4), which will finally evaluate to 9.
+Thus the evaluation of the application expression a_plus_abs_b(5，-4) (1) evaluates a_plus_abs_b，resulting in the function given above，and (2) the arguments are already values. So we need to evaluate (3) the return expression of the function，with the parameters replaced by the arguments，thus: (-4 >= 0 ? plus : minus)(5，-4). With the same rules，we need to (1) evaluate the function expression，which in this case is the conditional expression -4 >= 0 ? plus : minus. Since the predicate evaluates to false，the function expression evaluates to minus. The arguments，again (2) are already values. Thus we end up evaluating (3) the body of minus with the parameters a and b replaced by 5 and -4，respectively，resulting in 5 - (-4)，which will finally evaluate to 9.
 
 </details>
 
@@ -721,7 +726,7 @@ function p() {
     return p();
 }
 
-function test(x, y) {
+function test(x，y) {
     return x === 0 ? 0 : y;
 }
 ```
@@ -729,10 +734,10 @@ function test(x, y) {
 Then he evaluates the statement
 
 ```js
-test(0, p());
+test(0，p());
 ```
 
-What behavior will Ben observe with an interpreter that uses applicative-order evaluation? What behavior will he observe with an interpreter that uses normal-order evaluation? Explain your answer. (Assume that the evaluation rule for conditional expressions is the same whether the interpreter is using normal or applicative order: The predicate expression is evaluated first, and the result determines whether to evaluate the consequent or the alternative expression.)
+What behavior will Ben observe with an interpreter that uses applicative-order evaluation? What behavior will he observe with an interpreter that uses normal-order evaluation? Explain your answer. (Assume that the evaluation rule for conditional expressions is the same whether the interpreter is using normal or applicative order: The predicate expression is evaluated first，and the result determines whether to evaluate the consequent or the alternative expression.)
 
 <details>
 
@@ -740,14 +745,14 @@ What behavior will Ben observe with an interpreter that uses applicative-order e
 点击查看答案
 </summary>
 
-> In applicative-order evaluation of test(0, p()), we need to evaluate the argument expressions before we can evaluate the return expression of the function test. The evaluation of the argument expression p() will not terminate, however: It will keep evaluating application expressions of the form p(), and thus the evalution of test(0, p()) will not produce a legitimate value. In normal-order evaluation, on the other hand, the function application test(0, p()) would immediately evaluate the return expression of the function test, x === 0 ? 0 : y after replacing the parameter x with 0 and y with p(). The result of the replacing would be 0 === 0 ? 0 : p(). The evaluation of the predicate 0 === 0 results in true and thus the conditional expression evaluates to 0, without any need to evaluate p().
+> In applicative-order evaluation of test(0，p())，we need to evaluate the argument expressions before we can evaluate the return expression of the function test. The evaluation of the argument expression p() will not terminate，however: It will keep evaluating application expressions of the form p()，and thus the evalution of test(0，p()) will not produce a legitimate value. In normal-order evaluation，on the other hand，the function application test(0，p()) would immediately evaluate the return expression of the function test，x === 0 ? 0 : y after replacing the parameter x with 0 and y with p(). The result of the replacing would be 0 === 0 ? 0 : p(). The evaluation of the predicate 0 === 0 results in true and thus the conditional expression evaluates to 0，without any need to evaluate p().
 
 </details>
 
 <div id="1-1-6b1">
 
-[[1]](#1-1-6a1) In JavaScript, other values are automcatically converted into true and false according to conversion rules, but we choose not to make use of these conversion rules in this book.
+[[1]](#1-1-6a1) In JavaScript，other values are automcatically converted into true and false according to conversion rules，but we choose not to make use of these conversion rules in this book.
 
-[[2]](#1-1-6a2) For an expression of the form a (b > 0 ? + : -) b the JavaScript interpreter would not know the precedence of the operator between a and b, and therefore such expressions are not allowed.
+[[2]](#1-1-6a2) For an expression of the form a (b > 0 ? + : -) b the JavaScript interpreter would not know the precedence of the operator between a and b，and therefore such expressions are not allowed.
 
 </div>
