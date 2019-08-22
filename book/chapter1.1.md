@@ -1,10 +1,10 @@
-> 来源：[The Elements of Programming](https://sicp.comp.nus.edu.sg/chapters/2)
-
-> 译者：[塔希](https://github.com/iheyunfei/)
-
-> 协议：[CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
-
 # 1.1 编程的基本元素
+
+> - 来源：[The Elements of Programming](https://sicp.comp.nus.edu.sg/chapters/2)
+> - 译者：[塔希](https://github.com/iheyunfei/)
+> - 协议：[CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+---
 
 一种强大的编程语言不仅仅是操控电脑完成一些任务的手段，同样也表现的犹如一种框架，我们在其中组织存在于自身大脑中关于计算过程的想法。因此，当我们描述一门编程语言时，我们应该特别关注语言提供给我们的 **如何组合简单从而形成复杂** 的手段。任何一门强大的语言都提供了三种机制来帮助做到这点：
 

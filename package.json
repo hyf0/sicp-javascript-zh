@@ -1,0 +1,25 @@
+{
+  "name": "sicp-javascript-zh",
+  "version": "1.0.0",
+  "description": "原文：[Structure and Interpretation of Computer Programs JavaScript Adaptation](https://sicp.comp.nus.edu.sg/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vuepress dev book",
+    "build": "vuepress build book"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iheyunfei/sicp-javascript-zh.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iheyunfei/sicp-javascript-zh/issues"
+  },
+  "homepage": "https://github.com/iheyunfei/sicp-javascript-zh#readme",
+  "devDependencies": {
+    "vuepress": "^1.0.3"
+  }
+}
