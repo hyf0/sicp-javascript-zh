@@ -1,4 +1,5 @@
 module.exports = {
+    base: '/sicp-javascript-zh/',
     dest: './docs',
     title: '《计算机程序的构造与解释》JavaScript版',
     description: '暂无',
