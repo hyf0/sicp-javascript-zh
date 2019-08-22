@@ -26,7 +26,7 @@
 
 当想要使用JavaScript开始编程时，一种简单的方式是通过与内建于浏览器(也就是你正在浏览本页面使用的)的JavaScript解释器进行互动。JavaScript程序仅仅是可以被执行的JavaScript语句。我们已经编写好了一些语句，显示在下方的可以通过鼠标点击深色区域内。通过点击深色区域的JavaScript语句，一个可以对JavaScript语句进行求值的解释器会显示出来，并且可以展示求值后的结果。顺便一提，实现这些功能的程序同样由JavaScript编写；我们称呼这个鼠标点击程序为Script。<sub>(译者注：鉴于兼容性的原因，请通过点击区域下方的 **Click here to run** 来访问对应的JavaScript程序)</sub>
 
-有一种JavaScript语句类型称为表达式语句，由一个表达式尾随一个分号组成。一个简单的表达式可以是个数字(更精确的说，这个表达式是由一个数学型符号构成，其代表着一个以10为基数的数值。)如果你要求Script程序显示这个表达式的求值结果
+有一种JavaScript语句类型称为表达式语句，由一个表达式尾随一个分号组成。一个简单的表达式可以是个数字(更精确的说，这个表达式是由一个数学型符号构成，其代表着一个以10为基数的数值。)如果你想要求Script程序显示这个表达式的求值结果
 
 ```js
 486;
@@ -35,7 +35,7 @@
 
 通过点击 Click here to run，浏览器会创建一个新的标签页，新的标签页中包含着对应的JavaScript语句和对语句进行求值的选项。赶快点击 Click here to run，然后看看会发生什么吧！
 
-代表着数字的表达式可以通过运算符(如 + 或 * )组合，形成一个复合表达式，其表示把这些数字应用到相应的的基本函数上。
+代表着数字的表达式可以通过运算符(如 + 或 * )组合，形成一个复合表达式，表示把这些数字应用到运算符对应的的基本函数上。
 
 例如，通过点击 Click here to run，求值下列的任何表达式语句<sup id="1-1-1a1">[[1]](#1-1-1b1)</sup>:
 
@@ -69,9 +69,9 @@
 
 [Click here to run](https://sourceacademy.nus.edu.sg/playground#chap=1&prgrm=FAJgdA7ABA1FCMAGA3MYQ)
 
-上述包含着其他表达式的表达式被称为组合式。一个有着 *运算符 operator* 在中间，*运算对象 operand* 在两边形状的组合式被称为 *运算符组合式 operator combinations*。一个运算符组合式的求值结果取决于运算符对应的函数，以及应用于函数的被称为*参数 arguments*的运算对象。
+上述将其他表达式作为自身组成部分的表达式被称为*复合式 combinations*。一个有着 *运算符 operator* 在中间，*运算对象 operand* 在两边形状的复合表达式被称为 *运算复合式 operator combinations*。一个运算复合式的求值结果取决于运算符对应的函数，以及被应用于函数由运算对象所代表的*参数 arguments*。
 
-上述关于将运算符放置于运算对象中间位置的约定被称为 *中缀 infix* 记法。它与读者在上学时熟悉的常规数学记法一样。和数学一样，运算符组合式可以 *嵌套 nested* 的，也就是说，运算符组合式接受的参数同样也可以是运算符组合式。
+上述关于将运算符放置于运算对象中间位置的约定被称为 *中缀 infix* 记法。它与读者在上学时熟悉的常规数学记法一样。和数学一样，运算复合式是可以 *嵌套 nested* 的，也就是说，运算复合式接受的参数同样也可以是运算复合式。
 
 
 ```js
@@ -80,7 +80,7 @@
 
 [Click here to run](https://sourceacademy.nus.edu.sg/playground#chap=1&prgrm=FACgzABAVBCsCUEDUEQEYAMEC0EBs8A3MMEA)
 
-按照惯例，括号被用来包裹运算符组合式来避免歧义。JavaScript同样遵守这个约定，当省略括号时，乘法和除法之间的绑定——优先级，高于加法和减法。
+按照惯例，括号被用来包裹运算复合式来避免歧义。JavaScript同样遵守这个约定，当省略括号时，乘法和除法之间的绑定——即优先级，高于加法和减法。
 
 ```js
 3 * 5 + 10 / 2;
@@ -116,7 +116,7 @@
 
 我们称 +, -, * 和 / 为左结合运算符。
 
-原则上，对JavaScript的解释器的求值能力来讲，表达式的嵌套深度是没有限制的。但对于我们人类来说，我们甚至可以被一些相对简单的嵌套表达式搞迷糊，例如
+原则上，针对JavaScript解释器的求值能力来讲，表达式的嵌套深度是没有限制的。但对于我们人类来说，我们甚至可以被一些相对简单的嵌套表达式搞迷糊，例如
 
 ```js
 3 * 2 * (4 + (3 - 5)) + 10 * (27 / 6);
@@ -137,7 +137,7 @@
 
 从视觉上将表达式的主要组成部分分开。
 
-解释器的运算过程运行在一个基本的循环中：解释器得到来自浏览器的语句，对语句进行求值，打印求值的结果。这种运算模式通常被表达成解释器运行在一个 *读入-求值-打印 循环 read-eval-print loop* 中。要特别注意的是，完全显式的打印任何语句的值是不必要的。
+解释器在一个基本的循环中进行运算：解释器得到来自浏览器的语句，对语句进行求值，打印求值的结果。这种运算模式通常被表达为，解释器运行在一个 *读入-求值-打印 循环 read-eval-print loop* 中。要特别注意的是，完全显式的打印任何语句的值是不必要的。
 
 <div id="1-1-1b1">
 
@@ -147,7 +147,7 @@
 
 ## 1.1.2 命名和环境 Environment
 
-对于一门编程语言来说，相当关键的一方面就是其提供的使用命名来指代一个计算对象的手段，而我们所接触的第一个这种手段就是*常量 constants*。我们称这种命名标识了一个常量，其值是一个对象。
+对于一门编程语言来说，相当关键的一方面就是语言提供的，使用命名来指代一个计算对象的手段，而我们所接触的第一个这种手段就是*常量 constants*。我们称这种命名标识了一个常量，其 *值 value* 是一个对象。<sub>译者注：读者需要注意的是，此对象并非特指JavaScript中的被称为 *对象 object* 的某种数据类型，而是一种泛指，任何可以被指替的值都可以被称为对象</sub>。
 
 在JavaScript中，我们使用 *常量声明 constant declarations* 语句，键入
 
@@ -155,7 +155,7 @@
 const size = 2;
 ```
 
-使得解释器将值 **2** 与命名 **size** 关联起来。这个常量声明的作用就是创造关联，而非计算出一个表达式语句特定的值。JavaScript的语言规范要求对 *常量声明* 语句的求值结果为 *undefined*
+使得解释器将值 **2** 与命名 **size** 关联起来。常量声明语句的作用就是创造关联，而非计算出一个表达式语句特定的值。JavaScript的语言规范要求对 *常量声明* 语句进行求值结果为 *undefined*
 
 一旦命名 **size** 与 数字 **2** 关联起来，我们可以通过命名 **size** 来指代值 **2**
 
@@ -169,7 +169,7 @@ or
 5 * size;
 ```
 
-当然，在命名 **size** 可以被用在表达式之前，JavaScript解释器必须先执行 **size** 的常量声明。对于本书来说，为了简洁性，需要被事先执行的声明语句被刻意忽略了。不过，为了查看求值后的结果，你可以点击 Click here to run。在浏览器新打开的标签页中的程序会包含所有需要的语句。因此，作为点击下方的结果
+当然，在命名 **size** 可以被用在表达式中之前，JavaScript解释器必须先执行 **size** 的常量声明。对于本书来说，为了简洁性，需要被事先执行的声明语句被刻意忽略了。不过，为了查看求值后的结果，你可以点击 Click here to run。在浏览器新打开的标签页中的程序会包含所有需要的语句。因此，作为点击下方的结果
 
 ```js
 5 * size;
@@ -218,23 +218,23 @@ circumference;
 
 <div id="title1-1-3"></div>
 
-## 1.1.3 运算符组合式的求值
+## 1.1.3 运算复合式的求值
 
-在本章节，我们的目标是将计算的描述(与其他概念)孤立出来。比如说，让我们思考下运算符组合式的求值过程。解释器按照下列规则运行。
+在本章节，我们的目标是将计算的描述(与其他概念)孤立出来。比如说，让我们思考下运算复合式的求值过程。解释器按照下列规则运行：
 
-- 为了求值一个运算符组合式，按照以下步骤：
-    1. 求值运算组合式的“参数”——代表运算对象的子表达式或者说子运算符组合式
-    2. 将运算对象求值后的结果当作参数，调用运算符代表的函数
+- 为了求值一个运算复合式，遵循以下步骤：
+    1. 求值复合式的运算对象表达式
+    2. 调用运算符代表的函数，将其应用于参数——即运算对象所代表的值，
 
-即使如此简单的求值规则也揭示了关于一般计算的一些要点。首先，注意流程的第一步指示了，为了完成对运算符的求值，我们首先要对运算符组合式的每一个“参数(组合式中的运算对象)”进行求值。至此，求值规则自然而然的带有递归性；也就是说，求值规则的步骤暗示了调用规则本身的需要——即将求值规则应用于一个运算符组合式，其第一步是将本规则应用于其子运算符组合式，而对于被应用的子运算符组合式，同样对其子运算符组合式递归的应用本规则。
+即使如此简单的求值规则也揭示了关于一般计算的一些要点。首先，注意流程的第一步指明了，为了完成对运算符的求值，我们首先要对运算复合式的每一个运算对象进行求值。至此，求值规则自然而然的带有了递归性；也就是说，求值规则的步骤暗示了调用规则本身的需要。<sub>译者注：即将求值规则应用于一个运算复合式，其第一步是将本规则应用于其子运算复合式，而对于被应用的子运算复合式，同样对其子运算复合式递归的应用本规则。</sub>
 
-注意，对于多层嵌套的组合式(通常被认为相当复杂的计算过程)，这种递归的思想在表达如何对其求值是相当简洁的。举个例子，对下方语句求值
+注意，对于多层嵌套的复合式(通常被认为相当复杂的计算过程)，这种递归的思想在表达如何对其求值是相当简洁的。举个例子，对下方语句求值
 
 ```js
 (2 + 4 * 6) * (3 + 12);
 ```
 
-要求将求值规则应用于四个不同的组合式。将组合式以树的形式表示出来，我们可以得到一张求值过程的图片，见[图1.1](#figure1-1)。每个组合式以一个节点作为表示，由其延伸出的枝干分别指向运算符组合式的运算符和运算对象。末端节点(就是没有枝干的节点)代表着运算符或者数字。从树的角度来观察求值过程，可以看出运算对象的求值结果，从末端节点开始，向上方“渗出”，逐层的组合起来。通常，对于层次形或树形对象来讲，我们会看到递归是一种非常强大的技术来处理它们。实际上，“向上方渗出值”形式的求值规则通常被称为 *树形积累 tree accumulation*。
+要求将求值规则应用于四个不同的复合式。将复合式以树的形式表示出来，我们可以得到一张求值过程的图片，见[图1.1](#figure1-1)。每个节点代表一个复合式，由其延伸出的枝干分别指向运算复合式的运算符和运算对象。末端节点(就是没有枝干的节点)代表着运算符或者数字。从树的角度来观察求值过程，可以看出运算对象的求值结果，从末端节点开始，向上方“渗出”，逐层的结合起来。通常，对于处理层次化或树形的对象来说，我们会看到递归是一种非常强大的技术。实际上，“向上方渗出值”形式的求值规则通常被称为 *树形积累 tree accumulation*。
 
 <div id="figure1-1" align="center">
 
@@ -244,26 +244,28 @@ circumference;
 
 </div>
 
-接下来，值得注意的是，重复应用求值规则的第一步，总将我们带到需要进行求值的基本表达式，如数字或命名，而非其他的运算符组合式。我们作出以下规定来处理这些基本情况
+接下来，值得注意的是，重复应用求值规则的第一步，总将我们带到需要进行求值的基本表达式，如数字或命名，而非其他的运算复合式。我们作出以下规定来处理这些基本情况
 
 - 数字的值就是数字本身代表的数值，
 - 命名的值是，在某种环境下，与此命名相关联的那个对象
 
-注意，环境的作用就是决定表达式中各个命名的含义。在JavaScript中，谈论 **x + 1** 的值是多少，却没有提供环境信息指明命名x的含义，毫无意义。我们将会在第三章看到，环境 environment 是一个普遍性的概念，在解释器求值时提供了一个 *上下文 context*。因此，环境对于理解程序如何执行是至关重要的。
+注意，环境的作用就是决定表达式中各个命名的含义。在JavaScript中，谈论 **x + 1** 的值是多少，却没有提供环境信息指明命名x的含义，毫无意义。我们将会在第三章看到，*环境 environment* 是一个普遍性的概念，在解释器求值时提供了一个 *上下文 context*。因此，环境对于理解程序如何执行是至关重要的。
 
-注意，上述求值规则并不处理常量声明。举个例子，求值 **const x = 3**；并没有将 命名x 和 数字3 两个参数应用到运算符 = 上，因为常量声明的目的是在命名x与某个值之间创建一种联系。(也就是说，常量声明 **const x = 3;** 中的 **x = 3** 并不是运算符组合式。)
+注意，上述求值规则并不处理常量声明。举个例子，求值 **const x = 3;** 并没有将 命名x 和 数字3 两个参数应用到运算符 = 上，因为常量声明的目的是在命名x与某个值之间创建一种联系。(也就是说，常量声明 **const x = 3;** 中的 **x = 3** 并不是运算复合式。)
 
-在常量声明中的字符串 “**const**” 之所以加粗，是为了指明 const 是JavaScript中的一个 *关键字 keyword*。不同关键字有着其特殊的含义，因此是被保留的，不能被用作命名。一个关键字或多个关键字的组合指示了解释器来特殊对待这些单独的语句。每种关键字语句都有属于自身的求值规则。各种各样的语句(每一个都关联着自身的求值规则)构成了一门编程语言的语法。
+在常量声明中的字符串 “**const**” 之所以加粗，是为了指明 const 是JavaScript中的一个 *关键字 keyword*。不同关键字有着其特殊的含义，因此是保留的，不能被用作命名。一个关键字或多个关键字的组合指示了解释器如何特殊对待这些单独的语句。每种关键字语句都有属于自身的求值规则。各种各样的语句(每一个都关联着自身的求值规则)构成了一门编程语言的语法。
+
+<div id="title-1-1-4">
 
 ## 1.1.4 函数
 
 我们已经在JavaScript语言中见过了在任何强大编程语言中都会出现的元素：
 
 - 作为基础数据和函数的数字和和算术运算符。
-- 可以嵌套的组合式提供组合各种操作的手段。
+- 可以嵌套的复合式提供组合各种操作的手段。
 - 可以在命名和值之间创建联系的常量声明，提供了一种受限的抽象手段
 
-现在我们将要学习 *函数声明 function declarations*，一种更加强大的抽象技术，使得复合操作可以被命名和以单元的形式被引用。
+现在我们将要学习 *函数声明 function declarations*，一种更加强大的抽象技术，使得复合操作可以被命名和以单元的形式引用。
 
 我们的学习开始于，研究如何表达“平方 squaring”的想法。我们也许会说，“要求平方某物，即要求它乘以自身”。在我们的编程语言中，平方的表达如下：
 
@@ -282,7 +284,7 @@ function square(    x   ) { return x    *     x; }
 // 为了  平方   某物         要求   它  乘以  自身
 ```
 
-这里，我们有了一个名叫 **square** 的复合函数。这个函数代表着将一个事物乘以自身的操作。被乘的事物被给予了一个本地命名 **x**，其作用和自然语言中的代词相同。求值函数声明语句会创建一个复合函数，然后将其与命名 **square** 联系在一起。<sup id="1-1-4a1">[[1]](#1-1-4b1)<sup>
+这里，我们有了一个名叫 **square** 的 *复合函数 compound function*。这个函数代表着将一个事物乘以自身的操作。被乘的事物被给予了一个本地命名 **x**，其作用就和自然语言中的代词相同。对函数声明语句求值会创建一个复合函数，然后将其与命名 **square** 联系在一起。<sup id="1-1-4a1">[[1]](#1-1-4b1)<sup>
 
 我们最简单的一个函数声明格式如下
 
@@ -290,7 +292,7 @@ function square(    x   ) { return x    *     x; }
 
 > function *函数名* ( *参数* ) { return *表达式*; }
 
-*name* 是一个将会与函数连接在一起的符号，存储在环境中。<sup id="1-1-4a2">[[2]](#1-1-4b1)</sup> *parameters* 是在函数内部的命名，指向函数对应位置的参数。在关键字 **return** 后的 *expression* 是 *返回表达式 return expression*，当函数被调用时，其形式参数被给予的实际参数替换，返回表达式会产生相应的值。<sup id="1-1-4a3">[[3]](#1-1-4b1)</sup>参数组织在括号内，由逗号隔开，就和它们在声明后的函数被调用后时一样。
+*函数名 name* 是一个将会与函数联系在一起的符号，存储在环境中。<sup id="1-1-4a2">[[2]](#1-1-4b1)</sup> *参数 parameters* 是存在于函数内部的命名，指向函数对应位置的参数。在关键字 **return** 后的 *expression* 是 *返回表达式 return expression*，当函数被调用时，其形式参数被给予的实际参数替换，返回表达式会产生相应的值。<sup id="1-1-4a3">[[3]](#1-1-4b1)</sup>参数组织在括号内，由逗号隔开，就和它们在声明后的函数被调用时一样。
 
 在声明了 square 函数后，现在，我们可以在 *函数调用表达式 function application expression* 中使用这个函数。通过分号，我们可以将函数调用表达式转换成一个语句：
 
@@ -298,22 +300,22 @@ function square(    x   ) { return x    *     x; }
 square(21);
 ```
 
-命名 **square** 是函数表达式，**21** 是参数表达式。
+命名 **square** 是调用过程中的函数表达式，**21** 是参数表达式。
 
 
 ```js
 square(2 + 5);
 ```
 
-现在，参数变成了一个复合表达式，即表达式 2 + 5。
+现在，参数变成了一个复合表达式，即表达式 **2 + 5**。
 
 ```js
 square(square(3));
 ```
 
-当然，函数表达式同样可以被当作参数。
+当然，函数调用表达式也可以被当作参数。
 
-同样的，我们可以将 square 当作基本构件去声明其他函数。举个例子，x^2+y^2 可以被表达为
+同样的，我们可以将 square 当作基本构件去声明其他函数。举个例子，x<sup>2</sup>+y<sup>2</sup> 可以被表达为
 
 ```js
 square(x) + square(y);
@@ -334,7 +336,7 @@ function f(a) {
     return sum_of_squares(a + 1, a * 2);
 }
 ```
-函数调用如 **sum_of_squares(3,4)**，是继运算符组合式后，我们遇到的第二种关于表达式嵌套表达式的组合式。除了复合函数之外，JavaScript还提供了许多内置于解释器中的基本函数。比如函数 **math_log**，它计算给定参数的自然对数。<sup id="1-1-4a4">[[4]](#1-1-4b1)</sup>求值函数调用 **math_log(1)** 会得到结果0。确实，人并不能通过查看 **sum_of_squares** 函数的定义，判断出 **square** 函数是像 **math_log** 函数一样内建于解释器，还是说被定义为复合函数。
+函数调用如 **sum_of_squares(3,4)**，是继运算复合式后，我们遇到的第二种关于表达式嵌套表达式的复合式。除了复合函数之外，JavaScript还提供了许多内置于解释器中的基本函数。比如函数 **math_log**，它计算给定参数的自然对数。<sup id="1-1-4a4">[[4]](#1-1-4b1)</sup>求值函数调用 **math_log(1)** 会得到结果0。确实，人并不能通过查看 **sum_of_squares** 函数的定义，判断出 **square** 函数是像 **math_log** 函数一样内建于解释器，还是说被定义为复合函数。
 
 <small id="1-1-4b1">
 
@@ -344,35 +346,33 @@ function f(a) {
 
 [[3]](#1-1-4a3) 在下一节中，我们将看到函数体可以是一系列语句。在这种情况下，解释器依次求值序列中的每个语句，直到 return语句 确定函数调用的值。
 
-[[4]](#1-1-4a4) 本书使用的 Source 编程语言引入了命名 math_* 来替换JavaScript Math库中的所有函数和常量。
+[[4]](#1-1-4a4) 本书使用的 Source 编程语言引入了命名 math_* 来指代JavaScript中Math对象里所有的函数和常量。
 
 
 </small>
 
 ## 1.1.5 函数调用的代换模型
 
-为了求值一个调用组合式 application combination，解释器遵循着与求值运算符组合式相似的过程，描述于章节[1.1.3](#title1-1-3)。也就说解释器求值组合式中的每一个元素，然后将参数(组合式参数处表达式的求值结果)应用到函数(函数表达式的求值结果)上。
+为了求值一个调用复合式 application combination，解释器遵循着与求值运算复合式相似的过程，描述于章节[1.1.3](#title1-1-3)。也就说解释器求值复合式中的每一个元素，然后将参数(即调用复合式参数表达式的求值结果)应用到函数(即函数表达式的求值结果)上。
 
-In more detail, the interpreter proceeds as follows when evaluating application combinations:
+更详细地讲，在求值调用复合式时，解释器按照以下规则运行：
 
-更详细地将，在求值调用组合式时，解释器按照以下规则运行：
-
-- 为了求值下方这种形式的调用组合式
+- 为了求值下方这种形式的调用复合式
 - > *function-expression* ( *argument-expressions* )
 - 执行以下步骤:
-    1. 求值调用组合式中的函数表达式，得到将被调用的函数
-    2. 求值调用组合式的参数表达式
+    1. 求值调用复合式中的 *函数表达式 function-expression*，得到将被调用的函数
+    2. 求值调用复合式的 *参数表达式 argument-expressions*
     3. 将函数应用于参数:
-        - 如果是基本函数，我们只需简单将相应的数学函数应用于参数。
+        - 如果是基本函数，我们只需简单地将相应的数学函数应用于参数。
         - 如果是复合函数，在形式参数被实际参数替换后，我们求值 return 处的表达式。
 
-为了说明这个过程，我们来求值这个调用组合式
+为了说明这个过程，我们来求值这个调用复合式
 
 ```js
 f(5);
 ```
 
-求值命名 f，得到一个函数(于1.1.4节声明)。求值参数表达式 5，产生对应的参数值 5。现在，我们获取到函数 f 在 return 处的表达式
+求值命名 f，得到一个函数(于[1.1.4](#title-1-1-4)节声明)。求值参数表达式 5，产生对应的参数值 5。现在，我们获取到函数 f 在 return 处的表达式
 
 ```js
 sum_of_squares(a + 1, a * 2)
@@ -384,7 +384,7 @@ sum_of_squares(a + 1, a * 2)
 sum_of_squares(5 + 1, 5 * 2)
 ```
 
-因此，问题被简化成对带有两个参数和函数表达式 **sum_of_squares** 的调用组合式求值的问题。对这个组合式的求值包含了三个子问题。我们必须求值函数表达式来得到将被调用的函数，我们同样必须求值参数表达式来得到实际参数。现在 **5 + 1** 产生值 **6**，**5 * 2** 产生值 **10**，所以我们必须将 **6** 和 **10** 应用于函数 **sum_of_squares**。这些值会替换 **sum_of_squares** return 处表达式的形式参数 **x** 和 **y**，表达式被简化成
+因此，问题被简化成对带有两个参数和函数表达式 **sum_of_squares** 的调用复合式求值的问题。对这个复合式的求值包含了三个子问题。我们必须求值函数表达式来得到将被调用的函数，我们同样必须求值参数表达式来得到实际参数。现在 **5 + 1** 产生值 **6**，**5 * 2** 产生值 **10**，所以我们必须将 **6** 和 **10** 应用于函数 **sum_of_squares**。这些值会替换 **sum_of_squares** return 处表达式的形式参数 **x** 和 **y**，表达式被简化成
 
 ```js
 square(6) + square(10)
@@ -421,26 +421,31 @@ square(6) + square(10)
 
 我们刚刚描述过程被称为函数调用的代换模型。就本章的函数而言，这个代换过程作为确定函数“意义”的模型足够了。但是，有两点值得强调：
 
-- 代换模型的目的是帮助我们思考函数调用，而非提供一个解释器，在实际上，如何工作的描述。典型的解释器并不会通过修改函数定义时的文本来替换形式参数的值。实际上，对形式参数的代换是通过使用本地环境完成的。当我们在第三章和第四章，详细研究解释器的实现时，我们会讨论与之相关的完整内容。
+- 代换模型的目的是帮助我们思考函数调用，而非提供一个，在实际上，解释器如何工作的描述。典型的解释器并不会通过修改函数定义时的文本来替换形式参数的值。实际上，对形式参数的代换是通过使用本地环境完成的。当我们在第三章和第四章，详细研究解释器的实现时，我们会讨论与之相关的完整内容。
 
-- 随着本书进度不断增加，我们将提供一系列越来越精细的解释器如何工作的模型，最后在第5章中实现完整的解释器和编译器。代换模型只是这些模型中的第一个——一个开始正式思考求值过程的途径。一般而言，一般而言，在对科学和工程中的现象进行建模时，我们从简化的，不完整的模型开始。当我们详细研究事物时，这些简单的模型变得不充分，必须用更精细的模型来代替。代换模型也不例外。特别是，当我们在第三章讨论使用带有可变数据的函数时，我们将看到代换模型崩溃，必须替换为更复杂的函数调用模型。<sup id="1-1-5a1">[[1]](#1-1-5b1)</sup>
+- 随着本书进度不断增加，我们将提供一系列越来越精细的解释器如何工作的模型，最后在第5章中实现完整的解释器和编译器。代换模型只是这些模型中的第一个——一个开始正式思考求值过程的途径。一般而言，在对科学和工程中的现象进行建模时，我们从简化的，不完整的模型开始。当我们详细研究事物时，这些简单的模型变得不充分，必须用更精细的模型来代替。代换模型也不例外。特别是，当我们在第三章讨论使用带有可变数据的函数时，我们将看到代换模型崩溃，必须替换为更复杂的函数调用模型。<sup id="1-1-5a1">[[1]](#1-1-5b1)</sup>
 
 ### 应用序与正则序
 
-According to the description of evaluation given above, the interpreter first evaluates the function and argument expressions and then applies the resulting function to the resulting arguments. This is not the only way to perform evaluation. An alternative evaluation model would not evaluate the operands until their values were needed. Instead it would first substitute argument expressions for parameters until it obtained an expression involving only operators, and would then perform the evaluation. If we used this method, the evaluation of
+根据以上对求值过程的描述，解释器首先求值函数表达式和参数表达式，然后将求值函数表达式后的结果应用于求值参数表达式后的结果。但是，这并不是唯一的求值方法。另一种求值模型只在运算对象的值被实际需要的时候再进行求值。这种求值模型首先将参数处的表达式替换掉，直到获得一个仅包含基本运算符的表达式，然后再开始执行求值过程。如果我们使用这种方法，那么以下表达式的求值
 
 ```js
 f(5)
 ```
 
+将会按照以下序列进行
+
 ```js
 sum_of_squares(5 + 1, 5 * 2)
+
 square(5 + 1)  +  square(5 * 2)
+
 (5 + 1) * (5 + 1) + square(5 * 2)
+
 (5 + 1) * (5 + 1) + (5 * 2) * (5 * 2)
 ```
 
-followed by the reductions
+紧接着进行规约
 
 ```js
 6 * (5 + 1) + (5 * 2) * (5 * 2)
@@ -451,28 +456,32 @@ followed by the reductions
 36 + 100
 136
 ```
-
-This gives the same answer as our previous evaluation model, but the process is different. In particular, the evaluations of **5 + 1** and **5 * 2** are each performed twice here, corresponding to the reduction of the expression
+最后的求值结果与先前的求值模型相同，但是其中的处理过程是不同的。特别地，表达式 **5 + 1** 和 **5 * 2** 都被求值了两次，对应于以下表达式的归约
 
 ```js
 x * x
 ```
 
-with x replaced respectively by **5 + 1** and **5 * 2**.
+其中 **x** 被 **5 + 1** 和 **5 * 2** 替换掉。
 
-This alternative fully expand and then reduce evaluation method is known as normal-order evaluation, in contrast to the evaluate the arguments and then apply method that the interpreter actually uses, which is called *applicative-order evaluation*. It can be shown that, for function applications that can be modeled using substitution (including all the functions in the first two chapters of this book) and that yield legitimate values, normal-order and applicative-order evaluation produce the same value. (See exercise 1.5 for an instance of an "illegitimate" value where normal-order and applicative-order evaluation do not give the same result.)
+这种“完全展开然后归约”的求值方法被称为 *正则序求值 normal-order evaluation*，与解释器实际使用的“先求值参数后应用”的 *应用序求值 applicative-order evaluation* 相比。可以看出，对于可以通过替换模拟且能产生出合法值的函数调用(包括本书前两章的所有函数)，正则序和应用序的求值结果是相同的。(参见练习1.5，一个关于“非法值”的例子，正则序和应用序不会产生相同的结果。)
 
-JavaScript uses applicative-order evaluation, partly because of the additional efficiency obtained from avoiding multiple evaluations of expressions such as those illustrated with above and, more significantly, because normal-order evaluation becomes much more complicated to deal with when we leave the realm of procedures that can be modeled by substitution. On the other hand, normal-order evaluation can be an extremely valuable tool, and we will investigate some of its implications in chapters 3 and 4.<sup id="1-1-5a2">[[2]](#1-1-5b1)</sup>
+JavaScript使用应用序求值，一部分是因为由于避免了刚才讲的重复求值，因此带来的额外的效率，更重要的是，当我们遇到无法使用替换模型模拟的函数时，正则序求值处理起来会变得非常复杂。
+
+不过，在另一方面，正则序求值也可以成为一个极度有价值的工具，我们将会在第三章和第四章研究它的蕴意。<sup id="1-1-5a2">[[2]](#1-1-5b1)</sup>
+
 
 <div id="1-1-5b1">
 
 [[1]](#1-1-5a1) Despite the simplicity of the substitution idea, it turns out to be surprisingly complicated to give a rigorous mathematical definition of the substitution process. The problem arises from the possibility of confusion between the names used for the parameters of a function and the (possibly identical) names used in the expressions to which the function may be applied. Indeed, there is a long history of erroneous definitions of substitution in the literature of logic and programming semantics. See Stoy 1977 for a careful discussion of substitution.
 
-[[2]](#1-1-5a2) In chapter 3 we will introduce stream processing, which is a way of handling apparently infinite data structures by incorporating a limited form of normal-order evaluation. In section 4.2 we will modify the JavaScript interpreter to produce a normal-order variant of JavaScript.
+[[2]](#1-1-5a2) 在第三章，我们将会介绍 *流处理 stream processing*，一种通过混入一种受限的正则序求值形式，来处理明显“无穷尽”数据结构的方法。
 
 </div>
 
 ## 1.1.6 Conditional Expressions and Predicates
+
+## 1.1.6 条件表达式和谓词
 
 The expressive power of the class of functions that we can declare at this point is very limited, because we have no way to make tests and to perform different operations depending on the result of a test. For instance, we cannot declare a function that computes the absolute value of a number by testing whether the number is negative or not, and taking different actions in each case according to the rule
 
@@ -534,9 +543,9 @@ function not_equal(x, y) {
 
 Note that the operator !== when applied to two numbers, behaves the same as not_equal.
 
-## Exercise
+### Exercise
 
-### Exercise1.1
+#### Exercise1.1
 
 Below is a sequence of statements. Before you click on a statement, predict what the result of its evaluation will be.
 
@@ -629,7 +638,7 @@ a === 4
 
 </details>
 
-### Exercise1.2
+#### Exercise1.2
 
 Translate the following expression into JavaScript
 
@@ -653,7 +662,7 @@ Translate the following expression into JavaScript
 
 </details>
 
-### Exercise1.3
+#### Exercise1.3
 
 Declare a function that takes three numbers as arguments and returns the sum of the squares of the two larger numbers.
 
@@ -673,7 +682,7 @@ function f(x, y, z) {
 
 </details>
 
-### Exercise1.4
+#### Exercise1.4
 
 Observe that our model of evaluation allows for application combinations whose function expressions are compound expressions. Use this observation to describe the behavior of the following function:
 
@@ -703,7 +712,7 @@ Thus the evaluation of the application expression a_plus_abs_b(5, -4) (1) evalua
 
 </details>
 
-### Exercise1.5
+#### Exercise1.5
 
 Ben Bitdiddle has invented a test to determine whether the interpreter he is faced with is using applicative-order evaluation or normal-order evaluation. He declares the following two functions :
 
