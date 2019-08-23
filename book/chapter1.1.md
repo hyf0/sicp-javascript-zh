@@ -548,7 +548,7 @@ function not_equal(x，y) {
 
 注意，当运算符 **!==** 接受两个数字参数时，其行为和函数 **not_equal** 一样。
 
-### Exercise
+### 练习
 
 #### Exercise1.1
 
@@ -749,13 +749,13 @@ What behavior will Ben observe with an interpreter that uses applicative-order e
 
 </details>
 
-<div id="1-1-6b1">
+<sub id="1-1-6b1">
 
 [[1]](#1-1-6a1) In JavaScript，other values are automcatically converted into true and false according to conversion rules，but we choose not to make use of these conversion rules in this book.
 
 [[2]](#1-1-6a2) For an expression of the form a (b > 0 ? + : -) b the JavaScript interpreter would not know the precedence of the operator between a and b，and therefore such expressions are not allowed.
 
-</div>
+</sub>
 
 ## 1.1.7 例子：牛顿法求平方根
 
@@ -982,3 +982,147 @@ function cube_root(guess, x) {
 [[2]]() This square-root algorithm is actually a special case of Newton's method, which is a general technique for finding roots of equations. The square-root algorithm itself was developed by Heron of Alexandria in the first century a.d. We will see how to express the general Newton's method as a JavaScript function in section [1.3.4]().
 
 </div>
+
+## 1.1.8 作为 黑盒抽象 Black-Box Abstractions 的函数
+
+函数 **sqrt** 是第一个，我们通过一系列互相依赖的函数定义出来的计算过程。注意，**sqrt_iter** 的声明是递归的；换句话说，这个函数构建于本身之上。这种使用函数自身来定义自身的概念也许令人困扰。像这种“循环”定义的合理性似乎很不明确，更不用说它定义了一个良好的，将由计算机执行的过程了。在[1.2](./chapter1.2.md)节，我们会小心谨慎解决这些疑问。但首先，让我们思考下 **sqrt** 例子阐明的其他几个要点。
+
+我们可以观察到，计算平方根问题自然地分解为一系列子问题：如何确定猜测值足够好，如何改进猜测值，等等。这些中的每一个任务都由个别函数完成。整个 **sqrt** 程序可以被视为一簇函数(展示于图[1.2](#img1-1-8-1))，反映了原问题到子问题的分解。
+
+<div align="center" id="img1-1-8-1">
+
+![sqrt程序函数的分解图](./images/ch1-1-8-1.svg)
+
+**图 1.2** **sqrt** 程序函数的分解 
+
+</div>
+
+这个分解策略的重要性，并不是简单将程序分成几个部分。毕竟，我们总是能将任何大型程序分解成部分——前十行，下面十行，再下面十行，等等；而是，重点在于这些函数中的每一个都能完成一件概念上完整的任务，并且可以被当作模块使用，从而去定义其他函数。举个例子，当我们使用 **square** 定义 **good_enough** 函数时，我们能够将 **square** 函数视作一个“黑盒”。此时，我们并不关心这个函数是 *怎么* 计算出它的结果的，仅仅专注它能够计算出平方值这一 *事实*。
+
+关于 **square** 内部是如何计算平方的细节被隐藏了，可以稍后再做考虑。对于 **good_enough** 函数来说，与其说 **square** 是一个函数，不如说是一个函数的抽象，即所谓的函数抽象。从函数层次的抽象来看，任何可以计算出平方值的函数都被认为是等价的。
+
+因此，仅仅考虑函数的返回值来看，下列两个平方某数的函数应该是无法区别的。每一个函数都只接受一个数字类型的参数，然后产生这个数的平方作为返回值。<sup>[[1]](#comment1-1-8)</sup>
+
+```js
+functio square(x) {
+    return x * x;
+}
+```
+
+```js
+function square(x) {
+    return math_exp(double(math_log(x)));
+}
+function double(x) {
+    return x + x;
+}
+```
+所以，一个函数要能隐藏掉实现的细节。函数的使用者也许不会自己去实现某个函数，但可以从其他程序员那里得到这个函数，并将其当作一个黑盒。用户能否使用某个函数，不需要，也不应该取决于是否知道这个函数的内部实现。
+
+### 本地命名
+
+关于函数实现的一个细节是，这个函数的使用者应该不需要在意，实现者如何选择函数参数的名字。因此，对使用者来说，下列两个函数应该是无法区别的：
+
+```js
+function square(x) {
+    return x * x;
+}
+```
+
+```js
+function square(y) {
+    return y * y;
+}
+```
+
+这一原则——函数本身的含义应该独立于其实现者选择的参数命名，似乎是显而易见的，但是这一原则导致的影响却意义深远。最简单直接的影响就是参数命名应该被局限于函数体内部。举个例子，在我们的 **square-root** 函数那一节，我们在 **good_enough** 的函数声明里使用了 **square**：
+
+```js
+function good_enough(guess, x) {
+    return abs(square(guess) - x) < 0.001;
+}
+```
+
+**good_enough** 函数实现者的意图是，判断第一个参数代表的平方值，是否在第二个参数代表的误差值之内。我们可以看到，**good_enough** 函数实现者，使用命名 **guess** 指代第一个参数，使用 **x** 指代第二个参数。**square** 函数的实际参数是 **guess**。如果 **square** 函数的实现者使用x(如上述)指代那个参数，我们可以看出来，**good_enough** 里的 **x** 一定和 **square** 里的 **x** 不同。**square** 函数的运行一定不能影响到 **good_enough** 里使用的命名 **x** 的值，因为在 **square** 运行结束后，**good_enough** 可能仍然需要 **x** 的值。
+
+如果参数命名没有被局限在各个函数体内部，那么 **square** 中的参数 **x** 和
+**good_enough** 中的参数 **x** 在一起时会令人困惑，而且 **good_enough** 的行为会依赖于我们使用的 **square** 的内部实现。因此，**square** 就不再是我们想要的黑盒了。
+
+函数的参数在函数声明中扮演者一个独特的角色，因此参数命名的选择并不重要。参数命名被称为 *约束 bound* 命名，我们称函数声明约束了它本身的的参数。如果函数声明内部的某个约束命名被整体的替换了，我们认为这个函数声明的意义并没有变化。<sup>[[2]](#comment1-1-8)</sup> 如果一个命名没有被约束，我们称这个命名是 *自由的 free*。The set of expressions for which a binding declares a name is called the *作用域 scope* of that name. 在一个函数声明中，被函数参数约束的命名将函数体当作它们的作用域。
+
+在上文 **good_enough** 的函数声明中，**guess** 和 **x** 是约束命名，而 **abs** 和 **square** 是自由命名。**good_enough** 函数的含义应该独立于我们为命名 **guess** 和 **x** 选择的名字，只要这些命名与 **abs** 和 **square** 不同。(如果我们将 **guess** 重命名成 **abs** 就会因为 *捕获 capturing* 命名 **abs** 导致一个错误。**abs** 会从自由的变成被约束的。) 但是，**good_enough** 的含义并不独立于它对自由命名的选择。它肯定依赖于符号 **abs** 指代一个计算绝对值函数的事实(存在于函数声明外部)。如果我们将 **good_enough** 声明里的 **abs** 替换成 **math_cos** (JavaScript中计算cos值的函数)，那么JavaScript函数 **good_enough** 肯定计算出一个不同的值。
+
+### 内部声明和块结构
+
+目前为止，我们仅有一种约束命名的手段可用：函数的参数被局限于函数体内部。**square-root** 程序阐明了另一种我们想要控制如何使用命名的方式。这个存在的程序由多个孤立的函数构成：
+
+```js
+function sqrt(x) {
+    return sqrt_iter(1.0, x);
+}
+function sqrt_iter(guess, x) {
+    return good_enough(guess, x)
+           ? guess
+           : sqrt_iter(improve(guess, x), x);
+}
+function good_enough(guess, x) {
+    return abs(square(guess) - x) < 0.001;
+}
+function improve(guess, x) {
+    return average(guess, x / guess);
+}
+```
+
+这个程序的问题在于，对想要求平方根的用户来说，仅仅只有函数 **sqrt** 是重要的。其他的函数 (sqrt_iter，good_enough,和 improve) 只会干扰它们的思维。它们不能声明任何其他叫 **good_enough** 的函数，更不能将它们作为程序的一部分和 **square-root** 程序一起工作，因为 **sqrt** 需要一个符合自身需要，特定的 **good_enough** 函数。在多个程序员合作构建大型系统时，这更是一个严重的问题。举个例子，在构建一个大型数学函数库时，许多数学函数要计算出大量近似值，因此可能需要大量命名为 **good_enough** 和 **improve** 的辅助函数。我们想要局部化这些子函数，将他们隐藏到 **sqrt** 内部，因此，**sqrt** 就能和其他需要连续计算近似值的函数在一起工作，每一个函数都拥有私有的 **good_enough** 函数。为了做到这点，我们允许在函数内部声明函数，进而将被声明的函数局限在函数内部。举个例子，在 **square-root** 程序中，我们可以这样写
+
+```js
+function sqrt(x) {
+    function good_enough(guess, x) {
+        return abs(square(guess) - x) < 0.001;
+    }
+    function improve(guess, x) {
+        return average(guess, x / guess);
+    }
+    function sqrt_iter(guess, x) {
+        return good_enough(guess, x) 
+                   ? guess
+                   : sqrt_iter(improve(guess, x), x);
+    }
+   return sqrt_iter(1.0, x);
+}
+```
+
+函数体——大括号括起来的语句——被称为 *块 block*。嵌套在块内的函数声明被局限于块内。*块结构 block structure* 基本上是面对简单的如何包裹命名问题的正确解法。但是，这里潜在着一个更好的主意。除了局部化这些辅助函数的声明，我们也可以简化它们。既然 **x** 已经被 **sqrt** 的声明约束了，对于 **good_enough**, **improve**, 和 **sqrt_iter** 这些定义在 **sqrt** 内部的函数来说，它们与 **x** 处在同一作用域里。因此。再将 **x** 显式的传递给这些函数是没有必要的。相反，对于这些内部函数声明来讲，我们允许将 **x** 作为自由命名使用，如下所示。随后，当外围函数 **sqrt** 被调用时，内部的 **x** 从 **sqrt** 的参数处得到自己的值。这种规则被称为 *词法作用域 lexical scoping*。<sup>[[3]](#comment1-1-8)</sup>
+
+```js
+function sqrt(x) {
+    function good_enough(guess) {
+        return abs(square(guess) - x) < 0.001;
+    }
+    function improve(guess) {
+        return average(guess, x / guess);
+    }
+    function sqrt_iter(guess) {
+        return good_enough(guess)
+               ? guess
+               : sqrt_iter(improve(guess));
+   }
+   return sqrt_iter(1.0);
+}
+```
+
+我们会广泛的使用块结构来帮助我们，将大型程序分割成容易处理的片段。<sup>[[4]](#comment1-1-8)</sup> 块结构的概念起源于编程语言 Algol 60。随后出现在大多数高级编程语言中，并且，在帮助我们组织大型程序的结构方面，块结构是非常重要的工具。在下一节，我们会看到函数声明可以包含不仅仅只有函数声明。JavaScript对于块结构的实现是不完整的，所以函数声明是局限于被包裹的函数体，而非被包裹的块。因此，我们应该总是将局部函数声明放置在函数体的顶层。
+
+<sub id="comment1-1-8">
+
+[1] It is not even clear which of these functions is a more efficient implementation. This depends upon the hardware available. There are machines for which the obvious implementation is the less efficient one. Consider a machine that has extensive tables of logarithms and antilogarithms stored in a very efficient manner.
+
+[2] The concept of consistent renaming is actually subtle and difficult to define formally. Famous logicians have made embarrassing errors here.
+
+[3] Lexical scoping dictates that free names in a function are taken to refer to bindings made by enclosing function declarations; that is, they are looked up in the environment in which the function was declared. We will see how this works in detail in chapter 3 when we study environments and the detailed behavior of the interpreter.
+
+[4] Embedded declarations must come first in a function body. The management is not responsible for the consequences of running programs that intertwine declaration and use.
+
+</sub>
+
+

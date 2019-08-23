@@ -1,8 +1,8 @@
 module.exports = {
     base: '/sicp-javascript-zh/',
     dest: './docs',
-    title: '《计算机程序的构造与解释》JavaScript版',
-    description: '暂无',
+    title: '《SICP in JavaScript》',
+    description: '《计算机程序的构造与解释》JavaScript版',
     themeConfig: {
         repo: 'iheyunfei/sicp-javascript-zh',
         // displayAllHeaders: true,
@@ -18,6 +18,7 @@ module.exports = {
               children: [
                 '/chapter1',
                 '/chapter1.1',
+                '/chapter1.2',
               ],
           },
           
