@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vuepress dev book",
-    "build": "vuepress build book"
+    "build": "vuepress build book",
+    "build:commit": "npm run build && git add -A && git commit -m 'build docs' ",
+    "b:c": "npm run build:commit"
   },
   "repository": {
     "type": "git",

@@ -139,11 +139,11 @@
 
 解释器在一个基本的循环中进行运算：解释器得到来自浏览器的语句，对语句进行求值，打印求值的结果。这种运算模式通常被表达为，解释器运行在一个 *读入-求值-打印 循环 read-eval-print loop* 中。要特别注意的是，完全显式的打印任何语句的值是不必要的。
 
-<div id="1-1-1b1">
+<small id="1-1-1b1">
 
 [[1]](#1-1-1a1) 注意分号 **;** 使得JavaScript解释器将此表达式当作一个语句，因此被认为是一个完整的程序。但是，JavaScript本身并没有严格的要求任何时候都要带上分号，有时候可以忽略。但在本书中，我们绝不会把分号当作可选的，并且会指出哪些语句带了分号，哪些没有带。
 
-</div>
+</small>
 
 ## 1.1.2 命名和环境 Environment
 
@@ -210,11 +210,11 @@ circumference;
 
 需要明确的一点——在命名和值之间创建联系，在稍晚的时候使用它们意味着解释器需要某种记忆机制来保持追踪 命名-值 间的配对。这种记忆机制被称为环境(更准确的讲是全局环境，因为我们即将看到一个计算过程可能包含着大量不同的环境)。<sup id="1-1-2a1">[[1]](#1-1-2b1)</sup>
 
-<div id="1-1-2b1">
+<small id="1-1-2b1">
 
 [[1]](#1-1-2a1) 第三章会说明，对于理解解释器如何工作和如何实现解释器，环境的概念是至关重要的。
 
-</div>
+</small>
 
 <div id="title1-1-3"></div>
 
@@ -240,7 +240,7 @@ circumference;
 
 ![Tree representation，showing the value of each subexpression.](./images/ch1_1_3-1.png)
 
-<p>图1.1 树形表示，展示了每个子表达式的值</p>
+<small>图1.1 树形表示，展示了每个子表达式的值</small>
 
 </div>
 
@@ -471,13 +471,13 @@ JavaScript使用应用序求值，一部分是因为由于避免了刚才讲的�
 不过，在另一方面，正则序求值也可以成为一个极度有价值的工具，我们将会在第三章和第四章研究它的蕴意。<sup id="1-1-5a2">[[2]](#1-1-5b1)</sup>
 
 
-<div id="1-1-5b1">
+<small id="1-1-5b1">
 
 [[1]](#1-1-5a1) Despite the simplicity of the substitution idea，it turns out to be surprisingly complicated to give a rigorous mathematical definition of the substitution process. The problem arises from the possibility of confusion between the names used for the parameters of a function and the (possibly identical) names used in the expressions to which the function may be applied. Indeed，there is a long history of erroneous definitions of substitution in the literature of logic and programming semantics. See Stoy 1977 for a careful discussion of substitution.
 
 [[2]](#1-1-5a2) 在第三章，我们将会介绍 *流处理 stream processing*，一种通过混入一种受限的正则序求值形式，来处理明显“无穷尽”数据结构的方法。
 
-</div>
+</small>
 
 ## 1.1.6 条件表达式和谓词
 
@@ -749,17 +749,17 @@ What behavior will Ben observe with an interpreter that uses applicative-order e
 
 </details>
 
-<sub id="1-1-6b1">
+<small id="1-1-6b1">
 
 [[1]](#1-1-6a1) In JavaScript，other values are automcatically converted into true and false according to conversion rules，but we choose not to make use of these conversion rules in this book.
 
 [[2]](#1-1-6a2) For an expression of the form a (b > 0 ? + : -) b the JavaScript interpreter would not know the precedence of the operator between a and b，and therefore such expressions are not allowed.
 
-</sub>
+</small>
 
 ## 1.1.7 例子：牛顿法求平方根
 
-前文所介绍的函数更像常规数学意义上的函数。它们通过一个多个参数确定一个值。但是，在数学函数和计算机函数之间有个很大的差别。计算机函数必须是切实可行的。
+前文所介绍的函数更像常规数学意义上的函数。它们通过一个或多个参数确定一个值。但是，在数学函数和计算机函数之间有个很大的差别。计算机函数必须是切实可行的。
 
 举个恰当的例子，思考下关于如何计算平方根的问题。我们可以定义一个 **square-root** 函数如
 
@@ -767,9 +767,9 @@ What behavior will Ben observe with an interpreter that uses applicative-order e
 
 ![求平方根函数](./images/ch1_1_7-1.png)
 
-<sub>
+<small>
 译: √x = 某个 y 且能够满足 y≥0 and y<sup>2</sup>=x
-</sub>
+</small>
 
 </div>
 
@@ -975,13 +975,13 @@ function cube_root(guess, x) {
 
 </details>
 
-<div id="1-1-7b1">
+<small id="1-1-7b1">
 
 [[1]]() Declarative and imperative descriptions are intimately related, as indeed are mathematics and computer science. For instance, to say that the answer produced by a program is "correct" is to make a declarative statement about the program. There is a large amount of research aimed at establishing techniques for proving that programs are correct, and much of the technical difficulty of this subject has to do with negotiating the transition between imperative statements (from which programs are constructed) and declarative statements (which can be used to deduce things). In a related vein, an important current area in programming-language design is the exploration of so-called very high-level languages, in which one actually programs in terms of declarative statements. The idea is to make interpreters sophisticated enough so that, given "what is" knowledge specified by the programmer, they can generate "how to" knowledge automatically. This cannot be done in general, but there are important areas where progress has been made. We shall revisit this idea in chapter 4.
 
 [[2]]() This square-root algorithm is actually a special case of Newton's method, which is a general technique for finding roots of equations. The square-root algorithm itself was developed by Heron of Alexandria in the first century a.d. We will see how to express the general Newton's method as a JavaScript function in section [1.3.4]().
 
-</div>
+</small>
 
 ## 1.1.8 作为 黑盒抽象 Black-Box Abstractions 的函数
 
