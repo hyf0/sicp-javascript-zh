@@ -1,37 +1,6 @@
-# 《计算机程序的构造与解释》JavaScript版
+源于兴趣的动力自然强烈，也易随兴趣的消失而消逝。因精力有限，本仓库不再继续维护。
 
-原文：[Structure and Interpretation of Computer Programs JavaScript Adaptation](https://sicp.comp.nus.edu.sg/)
+时过多年，没想到 [@飞龙](https://github.com/wizardforcel) 竟然肝出来了中文版，当年读的 python 版的 sicp ，也是 [@飞龙](https://github.com/wizardforcel) 翻译的。结合最近的经历，不由得令人感慨，那些优秀的人总是反复出现在自己的学习之路上。
 
-译者：[塔希](https://github.com/iheyunfei/)
+# 有意阅读 SICP JavaScript 中文版的可移步 https://github.com/apachecn/sicp-js-zh
 
-- [Blog](http://iheyunfei.com/)
-
-协议：[CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
-
-<!-- 
-# 赞助我
-
-![](docs/img/alipay.png) -->
-
-# 阅读地址
-
-- [在线网站(良好排版)](http://iheyunfei.github.io/sicp-javascript-zh/)
-
-- [Github](./book/README.md)
-
-<!-- 
-# 目录
-
-- [Foreword](./book/foreword.md)
-- [Prefaces](./book/prefaces.md)
-- [Acknowledgments](./book/acknowledgments.md)
-- [1 使用函数构造抽象](./book/chapter1.md)
-    - [1.1 The Elements of Programming（翻译中）](./book/chapter1.1.md)
-    - [1.2 Functions and the Processes They Generate]()
-    - [1.3 Formulating Abstractions with Higher-Order Functions]()
-- [2 Building Abstractions with Data]()
-- [3 Modularity, Objects, and State]()
-- [4 Metalinguistic Abstraction]()
-- [文献参考](./references.md)
-- [Index]() 
--->
